@@ -1,0 +1,248 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À Propos",
+    "services": "Services",
+    "projects": "Projets",
+    "contact": "Contact",
+    "gallery": "Galerie"
+  },
+  "home": {
+    "subtitle": "National Techno-Project",
+    "title": "Excellence en Ingénierie, Architecture et Supervision de Projets",
+    "cta": "Découvrir nos projets",
+    "stats": [
+      {
+        "number": "35+",
+        "label": "Professionnels"
+      },
+      {
+        "number": "50+",
+        "label": "Projets Majeurs"
+      },
+      {
+        "number": "20+",
+        "label": "Ans d'Expérience"
+      },
+      {
+        "number": "100K+",
+        "label": "Heures d'Intervention"
+      }
+    ],
+    "expertiseTitle": "Nos Expertises",
+    "services": [
+      {
+        "title": "Architecture",
+        "desc": "Études architecturales complètes et génie civil"
+      },
+      {
+        "title": "Ingénierie Industrielle",
+        "desc": "Process, diagnostic et modernisation"
+      },
+      {
+        "title": "Urbanisme",
+        "desc": "PDAU, POS et études de viabilisation"
+      },
+      {
+        "title": "Supervision",
+        "desc": "OPC, maîtrise d'œuvre et contrôle"
+      }
+    ],
+    "clientsTitle": "Nos Clients de Référence",
+    "clients": [
+      "Sonatrach",
+      "AADL",
+      "OPGI",
+      "Ministère Justice",
+      "ACC/ORASCOM",
+      "SONELGAZ",
+      "ANIREF",
+      "APN"
+    ]
+  },
+  "about": {
+    "title": "À Propos de NAPRO",
+    "subtitle": "Une entreprise algérienne d'excellence dans le domaine de l'ingénierie et de l'architecture.",
+    "info": "Informations Générales",
+    "juridic": "Forme Juridique",
+    "juridicVal": "Société par Actions",
+    "capital": "Capital Social",
+    "capitalVal": "52.000.000 DA",
+    "address": "Siège Social",
+    "addressVal": "23 Rue des frères Gouraya, Bir Khadem - Alger",
+    "ceo": "Direction",
+    "ceoVal": "Mr. BOUKHELKHAL HACENE - PDG",
+    "missionTitle": "Notre Mission",
+    "missionText1": "NAPRO s'est imposée comme un acteur majeur dans les domaines de l'architecture, du génie civil, de l'ingénierie industrielle et de l'urbanisme.",
+    "missionText2": "Avec plus de 20 années d'expérience, nous avons développé une expertise reconnue dans la supervision et le contrôle de projets d'envergure nationale.",
+    "missionTags": "Excellence • Innovation • Fiabilité",
+    "teamTitle": "Structure de l'Équipe",
+    "team": [
+      {
+        "title": "Cadres Dirigeants",
+        "count": "04"
+      },
+      {
+        "title": "Ingénieurs & Cadres",
+        "count": "30"
+      },
+      {
+        "title": "Techniciens Supérieurs",
+        "count": "11"
+      },
+      {
+        "title": "Personnel Support",
+        "count": "05"
+      }
+    ],
+    "techTitle": "Moyens Techniques",
+    "tech": [
+      "44 Micro-ordinateurs + 3 portables",
+      "Logiciels CAO/DAO (AutoCAD 2008-2013)",
+      "Station Topographique LEICA TS 02",
+      "Logiciels de calcul (SAP 2000)",
+      "SIG: Atlas GIS, Map Info",
+      "Matériel de contrôle du béton",
+      "6 Véhicules de service"
+    ],
+    "turnoverTitle": "Chiffre d'Affaires (HT)",
+    "turnover": [
+      {
+        "year": "2024",
+        "amount": "17,5 M DA"
+      },
+      {
+        "year": "2023",
+        "amount": "30 M DA"
+      },
+      {
+        "year": "2022",
+        "amount": "09 M DA"
+      },
+      {
+        "year": "2021",
+        "amount": "41 M DA"
+      },
+      {
+        "year": "2020",
+        "amount": "63 M DA"
+      }
+    ]
+  },
+  "services": {
+    "title": "Nos Services",
+    "subtitle": "Des prestations complètes dans tous les domaines de l'ingénierie et de l'architecture.",
+    "list": [
+      {
+        "title": "Direction de la Supervision des Travaux",
+        "items": [
+          "Ordonnancement, Pilotage et Coordination (O.P.C)",
+          "Maîtrise d'œuvre d'exécution",
+          "Levés topographiques, Bornages",
+          "Études parcellaires et Implantations",
+          "Cartographie"
+        ]
+      },
+      {
+        "title": "Direction des Études d'Architecture",
+        "items": [
+          "Études d'Architecture (Esquisse, A.P.D)",
+          "Projets d'exécution",
+          "Études de Génie Civil",
+          "Études des C.E.S (Corps d'États Secondaires)",
+          "VRD (Voiries et Réseaux Divers)"
+        ]
+      },
+      {
+        "title": "Direction de l'Ingénierie Industrielle",
+        "items": [
+          "Études de Process",
+          "Diagnostic Technique",
+          "Études de Rénovation",
+          "Modernisation d'Unités Industrielles",
+          "Missions d'ensemblier",
+          "Maîtrise complète de projets",
+          "Études énergétiques"
+        ]
+      },
+      {
+        "title": "Direction des Études d'Aménagement et d'Urbanisme",
+        "items": [
+          "Études des Plans Directeurs d'Aménagement et d'Urbanisme (PDAU)",
+          "Études des Plans d'Occupation des Sols (POS)",
+          "Études de viabilisation",
+          "Aménagement du territoire"
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Nos Projets",
+    "subtitle": "Plus de 50 projets d'envergure nationale réalisés avec excellence.",
+    "allProjects": "Tous nos Projets",
+    "filters": [
+      {
+        "id": "all",
+        "label": "Tous les projets"
+      },
+      {
+        "id": "housing",
+        "label": "Logements"
+      },
+      {
+        "id": "industrial",
+        "label": "Industriel"
+      },
+      {
+        "id": "infrastructure",
+        "label": "Infrastructure"
+      },
+      {
+        "id": "education",
+        "label": "Enseignement"
+      },
+      {
+        "id": "urban",
+        "label": "Urbanisme"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contactez-Nous",
+    "subtitle": "Notre équipe est à votre disposition pour étudier vos projets.",
+    "infoTitle": "Informations de Contact",
+    "phone": "Téléphone",
+    "fax": "Fax",
+    "email": "Email",
+    "address": "Adresse",
+    "addressVal": "23 Rue des frères Gouraya\nBir Khadem - Alger\nAlgérie",
+    "hoursTitle": "Horaires d'ouverture",
+    "weekdays": "Dimanche - Jeudi",
+    "weekdaysHours": "08:00 - 17:00",
+    "weekends": "Vendredi - Samedi",
+    "weekendsHours": "Fermé",
+    "formTitle": "Envoyez-nous un message",
+    "formName": "Nom complet *",
+    "formNamePlaceholder": "Votre nom",
+    "formEmail": "Email *",
+    "formEmailPlaceholder": "votre@email.com",
+    "formPhone": "Téléphone",
+    "formPhonePlaceholder": "+213 XXX XXX XXX",
+    "formSubject": "Sujet *",
+    "formSubjectPlaceholder": "Sujet de votre message",
+    "formMessage": "Message *",
+    "formMessagePlaceholder": "Décrivez votre projet ou votre demande...",
+    "formSubmit": "Envoyer le message"
+  },
+  "gallery": {
+    "title": "Projets Phares en Images",
+    "subtitle": "Découvrez nos réalisations majeures",
+    "viewProject": "Voir le projet"
+  },
+  "footer": {
+    "tagline": "Excellence en Ingénierie, Architecture et Supervision de Projets.",
+    "navigation": "Navigation",
+    "services": "Nos Services",
+    "rights": "Tous droits réservés."
+  }
+}

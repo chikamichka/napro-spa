@@ -1,0 +1,248 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "projects": "Projects",
+    "contact": "Contact",
+    "gallery": "Gallery"
+  },
+  "home": {
+    "subtitle": "National Techno-Project",
+    "title": "Excellence in Engineering, Architecture, and Project Supervision",
+    "cta": "Discover our projects",
+    "stats": [
+      {
+        "number": "35+",
+        "label": "Professionals"
+      },
+      {
+        "number": "50+",
+        "label": "Major Projects"
+      },
+      {
+        "number": "20+",
+        "label": "Years of Experience"
+      },
+      {
+        "number": "100K+",
+        "label": "Intervention Hours"
+      }
+    ],
+    "expertiseTitle": "Our Expertise",
+    "services": [
+      {
+        "title": "Architecture",
+        "desc": "Comprehensive architectural studies and civil engineering"
+      },
+      {
+        "title": "Industrial Engineering",
+        "desc": "Process, diagnostics, and modernization"
+      },
+      {
+        "title": "Urban Planning",
+        "desc": "PDAU, POS, and feasibility studies"
+      },
+      {
+        "title": "Supervision",
+        "desc": "OPC, project management, and control"
+      }
+    ],
+    "clientsTitle": "Our Key Clients",
+    "clients": [
+      "Sonatrach",
+      "AADL",
+      "OPGI",
+      "Ministry of Justice",
+      "ACC/ORASCOM",
+      "SONELGAZ",
+      "ANIREF",
+      "APN"
+    ]
+  },
+  "about": {
+    "title": "About NAPRO",
+    "subtitle": "An Algerian company of excellence in the field of engineering and architecture.",
+    "info": "General Information",
+    "juridic": "Legal Form",
+    "juridicVal": "Joint-stock company (SPA)",
+    "capital": "Social Capital",
+    "capitalVal": "52,000,000 DZD",
+    "address": "Head Office",
+    "addressVal": "23 Gouraya Brothers Street, Bir Khadem - Algiers",
+    "ceo": "Management",
+    "ceoVal": "Mr. BOUKHELKHAL HACENE - CEO",
+    "missionTitle": "Our Mission",
+    "missionText1": "NAPRO has established itself as a major player in the fields of architecture, civil engineering, industrial engineering, and urban planning.",
+    "missionText2": "With over 20 years of experience, we have developed recognized expertise in the supervision and control of large-scale national projects.",
+    "missionTags": "Excellence • Innovation • Reliability",
+    "teamTitle": "Team Structure",
+    "team": [
+      {
+        "title": "Executive Managers",
+        "count": "04"
+      },
+      {
+        "title": "Engineers & Managers",
+        "count": "30"
+      },
+      {
+        "title": "Senior Technicians",
+        "count": "11"
+      },
+      {
+        "title": "Support Staff",
+        "count": "05"
+      }
+    ],
+    "techTitle": "Technical Resources",
+    "tech": [
+      "44 PCs + 3 Laptops",
+      "CAD/DAO Software (AutoCAD 2008-2013)",
+      "LEICA TS 02 Total Station",
+      "Calculation Software (SAP 2000)",
+      "GIS: Atlas GIS, Map Info",
+      "Concrete testing equipment",
+      "6 Service Vehicles"
+    ],
+    "turnoverTitle": "Turnover (Excl. Tax)",
+    "turnover": [
+      {
+        "year": "2024",
+        "amount": "17.5M DZD"
+      },
+      {
+        "year": "2023",
+        "amount": "30M DZD"
+      },
+      {
+        "year": "2022",
+        "amount": "09M DZD"
+      },
+      {
+        "year": "2021",
+        "amount": "41M DZD"
+      },
+      {
+        "year": "2020",
+        "amount": "63M DZD"
+      }
+    ]
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "Comprehensive services in all fields of engineering and architecture.",
+    "list": [
+      {
+        "title": "Works Supervision Department",
+        "items": [
+          "Scheduling, Piloting, and Coordination (OPC)",
+          "Execution Project Management",
+          "Topographical Surveys, Demarcations",
+          "Plot Studies and Layouts",
+          "Cartography"
+        ]
+      },
+      {
+        "title": "Architectural Studies Department",
+        "items": [
+          "Architectural Studies (Sketch, Preliminary Design)",
+          "Execution Projects",
+          "Civil Engineering Studies",
+          "Secondary Building Services (CES) Studies",
+          "VRD (Roads and Various Networks)"
+        ]
+      },
+      {
+        "title": "Industrial Engineering Department",
+        "items": [
+          "Process Studies",
+          "Technical Diagnostics",
+          "Renovation Studies",
+          "Modernization of Industrial Units",
+          "Turnkey Missions",
+          "Complete Project Management",
+          "Energy Studies"
+        ]
+      },
+      {
+        "title": "Planning and Urbanism Studies Department",
+        "items": [
+          "Master Plans for Development and Urbanism (PDAU) Studies",
+          "Land Use Plans (POS) Studies",
+          "Viability Studies",
+          "Territorial Planning"
+        ]
+      }
+    ]
+  },
+  "projects": {
+    "title": "Our Projects",
+    "subtitle": "Over 50 large-scale national projects completed with excellence.",
+    "allProjects": "All Our Projects",
+    "filters": [
+      {
+        "id": "all",
+        "label": "All Projects"
+      },
+      {
+        "id": "housing",
+        "label": "Housing"
+      },
+      {
+        "id": "industrial",
+        "label": "Industrial"
+      },
+      {
+        "id": "infrastructure",
+        "label": "Infrastructure"
+      },
+      {
+        "id": "education",
+        "label": "Education"
+      },
+      {
+        "id": "urban",
+        "label": "Urban Planning"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "Our team is available to study your projects.",
+    "infoTitle": "Contact Information",
+    "phone": "Phone",
+    "fax": "Fax",
+    "email": "Email",
+    "address": "Address",
+    "addressVal": "23 Gouraya Brothers Street\nBir Khadem - Algiers\nAlgeria",
+    "hoursTitle": "Opening Hours",
+    "weekdays": "Sunday - Thursday",
+    "weekdaysHours": "08:00 - 17:00",
+    "weekends": "Friday - Saturday",
+    "weekendsHours": "Closed",
+    "formTitle": "Send us a message",
+    "formName": "Full name *",
+    "formNamePlaceholder": "Your name",
+    "formEmail": "Email *",
+    "formEmailPlaceholder": "your@email.com",
+    "formPhone": "Phone",
+    "formPhonePlaceholder": "+213 XXX XXX XXX",
+    "formSubject": "Subject *",
+    "formSubjectPlaceholder": "Subject of your message",
+    "formMessage": "Message *",
+    "formMessagePlaceholder": "Describe your project or request...",
+    "formSubmit": "Send Message"
+  },
+  "gallery": {
+    "title": "Featured Projects Gallery",
+    "subtitle": "Discover our major achievements",
+    "viewProject": "View Project"
+  },
+  "footer": {
+    "tagline": "Excellence in Engineering, Architecture and Project Supervision.",
+    "navigation": "Navigation",
+    "services": "Our Services",
+    "rights": "All rights reserved."
+  }
+}
