@@ -12,53 +12,20 @@
     "title": "التميز في الهندسة، العمارة والإشراف على المشاريع",
     "cta": "اكتشف مشاريعنا",
     "stats": [
-      {
-        "number": "+35",
-        "label": "محترف"
-      },
-      {
-        "number": "+50",
-        "label": "مشروع كبير"
-      },
-      {
-        "number": "+20",
-        "label": "سنة خبرة"
-      },
-      {
-        "number": "+100K",
-        "label": "ساعة تدخل"
-      }
+      { "number": "+35", "label": "محترف" },
+      { "number": "+50", "label": "مشروع كبير" },
+      { "number": "+20", "label": "سنة خبرة" },
+      { "number": "+100K", "label": "ساعة تدخل" }
     ],
     "expertiseTitle": "خبراتنا",
     "services": [
-      {
-        "title": "الهندسة المعمارية",
-        "desc": "دراسات معمارية متكاملة وهندسة مدنية"
-      },
-      {
-        "title": "الهندسة الصناعية",
-        "desc": "دراسة العمليات، التشخيص والتحديث"
-      },
-      {
-        "title": "التعمير",
-        "desc": "مخططات التهيئة والتعمير ودراسات الجدوى"
-      },
-      {
-        "title": "الإشراف",
-        "desc": "التنظيم، الإدارة والمراقبة (OPC)"
-      }
+      { "title": "الهندسة المعمارية", "desc": "دراسات معمارية متكاملة وهندسة مدنية" },
+      { "title": "الهندسة الصناعية", "desc": "دراسة العمليات، التشخيص والتحديث" },
+      { "title": "التعمير", "desc": "مخططات التهيئة والتعمير ودراسات الجدوى" },
+      { "title": "الإشراف", "desc": "التنظيم، الإدارة والمراقبة (OPC)" }
     ],
     "clientsTitle": "عملاؤنا المرجعيون",
-    "clients": [
-      "سوناطراك",
-      "AADL",
-      "OPGI",
-      "وزارة العدل",
-      "ACC/ORASCOM",
-      "سونلغاز",
-      "ANIREF",
-      "APN"
-    ]
+    "clients": ["AADL", "OPGI", "سونلغاز", "ANIREF","ACC/ORASCOM","سوناطراك", "APN","وزارة العدل"]
   },
   "about": {
     "title": "عن مؤسسة نابرو (NAPRO)",
@@ -74,26 +41,14 @@
     "ceoVal": "السيد بوخلخال حسين - رئيس مجلس الإدارة والمدير العام",
     "missionTitle": "مهمتنا",
     "missionText1": "رسخت نابرو مكانتها كفاعل رئيسي في مجالات الهندسة المعمارية، الهندسة المدنية، الهندسة الصناعية والتعمير.",
-    "missionText2": "بفضل أكثر من 20 عامًا من الخبرة، طورنا خبرة معترف بها في الإشراف والتحكم في المشاريع الوطنية الكبرى.",
+    "missionText2": "بفضل أكثر من 20 عاماً من الخبرة، طورنا خبرة معترف بها في الإشراف والتحكم في المشاريع الوطنية الكبرى.",
     "missionTags": "التميز • الابتكار • الموثوقية",
     "teamTitle": "هيكل الفريق",
     "team": [
-      {
-        "title": "إطارات تنفيذية",
-        "count": "04"
-      },
-      {
-        "title": "مهندسون وإطارات",
-        "count": "30"
-      },
-      {
-        "title": "تقنيون سامون",
-        "count": "11"
-      },
-      {
-        "title": "موظفو دعم",
-        "count": "05"
-      }
+      { "title": "إطارات تنفيذية", "count": "04" },
+      { "title": "مهندسون وإطارات", "count": "30" },
+      { "title": "تقنيون سامون", "count": "11" },
+      { "title": "موظفو دعم", "count": "05" }
     ],
     "techTitle": "الوسائل التقنية",
     "tech": [
@@ -107,26 +62,11 @@
     ],
     "turnoverTitle": "رقم الأعمال (بدون احتساب الرسوم)",
     "turnover": [
-      {
-        "year": "2024",
-        "amount": "17.5 م دج"
-      },
-      {
-        "year": "2023",
-        "amount": "30 م دج"
-      },
-      {
-        "year": "2022",
-        "amount": "09 م دج"
-      },
-      {
-        "year": "2021",
-        "amount": "41 م دج"
-      },
-      {
-        "year": "2020",
-        "amount": "63 م دج"
-      }
+      { "year": "2024", "amount": "17.5 م دج" },
+      { "year": "2023", "amount": "30 م دج" },
+      { "year": "2022", "amount": "09 م دج" },
+      { "year": "2021", "amount": "41 م دج" },
+      { "year": "2020", "amount": "63 م دج" }
     ]
   },
   "services": {
@@ -178,34 +118,153 @@
   },
   "projects": {
     "title": "مشاريعنا",
-    "subtitle": "أكثر من 50 مشروعًا وطنيًا كبيرًا تم إنجازها بامتياز.",
+    "subtitle": "أكثر من 50 مشروعاً وطنياً كبيراً تم إنجازه بامتياز.",
     "allProjects": "جميع مشاريعنا",
+    "projectsFound": "مشروع تم العثور عليه",
     "filters": [
+      { "id": "all", "label": "كل المشاريع" },
+      { "id": "housing", "label": "السكن" },
+      { "id": "industrial", "label": "الصناعة" },
+      { "id": "infrastructure", "label": "الهياكل القاعدية" },
+      { "id": "education", "label": "التعليم" },
+      { "id": "urban", "label": "التعمير" }
+    ]
+  },
+  "projectsData": {
+    "all": [
+      { "id": 1, "name": "مخطط شغل الأراضي بوخليفة", "client": "مديرية التعمير", "location": "بجاية", "category": "urban" },
+      { "id": 2, "name": "مخطط شغل الأراضي لتجمع أسورو", "client": "مديرية التعمير", "location": "تمنراست", "category": "urban" },
+      { "id": 3, "name": "مخطط شغل الأراضي مركز الرحمانية", "client": "ANSA", "location": "الرحمانية", "category": "urban" },
+      { "id": 4, "name": "مخطط شغل الأراضي برج بوعريريج الشمال الغربي", "client": "مديرية التعمير", "location": "برج بوعريريج", "category": "urban" },
+      { "id": 5, "name": "مخطط شغل الأراضي حي سيدي بنور", "client": "ANSA", "location": "محالمة", "category": "urban" },
+      { "id": 6, "name": "مخطط شغل الأراضي تاهقارت", "client": "مديرية التعمير", "location": "تمنراست", "category": "urban" },
+      { "id": 7, "name": "مخطط شغل الأراضي إفري جانت رقم 05", "client": "مديرية التعمير", "location": "إليزي", "category": "urban" },
+      { "id": 8, "name": "مخطط شغل الأراضي برج عمر إدريس", "client": "مديرية التعمير", "location": "إليزي", "category": "urban" },
+      { "id": 9, "name": "مخطط شغل الأراضي تامريجت", "client": "مديرية التعمير", "location": "بجاية", "category": "urban" },
+      { "id": 10, "name": "مصنع الإسمنت المسيلة - الهندسة المدنية", "client": "ACC/ORASCOM", "location": "المسيلة", "category": "industrial" },
+      { "id": 11, "name": "مصنع الإسمنت عقاز/سيق - الهندسة المدنية", "client": "CIBA/ORASCOM", "location": "سيق", "category": "industrial" },
+      { "id": 12, "name": "مصنع الإسمنت الشلف - صوامع الكلنكر", "client": "ECDE", "location": "الشلف", "category": "industrial" },
+      { "id": 13, "name": "الإشراف على مشاريع سوناطراك حاسي مسعود (24 شهر)", "client": "سوناطراك/DP", "location": "حاسي مسعود", "category": "industrial" },
+      { "id": 14, "name": "الإشراف على مشاريع سوناطراك عين أمناس (12 شهر)", "client": "سوناطراك/RTI", "location": "عين أمناس", "category": "industrial" },
+      { "id": 15, "name": "الإشراف على مشاريع سوناطراك بجاية (24 شهر)", "client": "سوناطراك/TRC", "location": "بجاية", "category": "industrial" },
+      { "id": 16, "name": "الإشراف على مشاريع سوناطراك حاسي الرمل", "client": "سوناطراك/DP", "location": "حاسي الرمل", "category": "industrial" },
+      { "id": 17, "name": "المساعدة التقنية سوناطراك ورهود", "client": "سوناطراك/ورهود", "location": "حاسي مسعود", "category": "industrial" },
+      { "id": 18, "name": "الإشراف على مشاريع سوناطراك HMD (36 شهر)", "client": "سوناطراك/DP/HMD", "location": "حاسي مسعود", "category": "industrial" },
+      { "id": 19, "name": "تهيئة مسبح قاعدة إيرارا", "client": "سوناطراك/DP/HMD", "location": "حاسي مسعود", "category": "industrial" },
+      { "id": 20, "name": "إعادة تأهيل مصانع الجلود والدباغة", "client": "المدابغ", "location": "جيجل، الجلفة، العامرية، باتنة، بجاية", "category": "industrial" },
+      { "id": 21, "name": "موقف 200 مكان للشاحنات - مصنع الإسمنت", "client": "ACC/LAFARGE", "location": "حمة الضلعة، المسيلة", "category": "industrial" },
+      { "id": 22, "name": "المنطقة الصناعية رأس الماء (100 هكتار)", "client": "ANIREF", "location": "سيدي بلعباس", "category": "industrial" },
+      { "id": 23, "name": "ثانوية 1000 مقعد بوينان", "client": "AADL", "location": "بوينان", "category": "education" },
+      { "id": 24, "name": "05 متوسطات نوع B6", "client": "AADL", "location": "بوينان", "category": "education" },
+      { "id": 25, "name": "06 مجموعات مدرسية نوع D", "client": "AADL", "location": "سيدي عبد الله", "category": "education" },
+      { "id": 26, "name": "15000 مسكن بوينان", "client": "AADL", "location": "بوينان", "category": "housing" },
+      { "id": 27, "name": "1000 مسكن فادس", "client": "OPGI Birmandreis", "location": "الجزائر", "category": "housing" },
+      { "id": 28, "name": "748 مسكن LSP بابا حسين", "client": "OPGI Hussein Dey", "location": "الجزائر", "category": "housing" },
+      { "id": 29, "name": "439 مسكن TCE دائرة الشعبان", "client": "AADL", "location": "عين البنيان", "category": "housing" },
+      { "id": 30, "name": "780 مسكن VRD محالمة", "client": "AADL", "location": "محالمة", "category": "housing" },
+      { "id": 31, "name": "114 مسكن اجتماعي", "client": "OPGI Birmandreis", "location": "الجزائر", "category": "housing" },
+      { "id": 32, "name": "1270 مسكن اجتماعي", "client": "OPGI BLIDA", "location": "البليدة", "category": "housing" },
+      { "id": 33, "name": "189 مسكن اجتماعي", "client": "AADL Said Hamdine", "location": "الجزائر", "category": "housing" },
+      { "id": 34, "name": "500 مسكن TCE مفتاح (18 شهر)", "client": "OPGI BLIDA", "location": "البليدة", "category": "housing" },
+      { "id": 35, "name": "2000 مسكن روخي سويدانية", "client": "OPGI Hussein Dey", "location": "الجزائر", "category": "housing" },
+      { "id": 36, "name": "2000 مسكن الرحمانية", "client": "AADL", "location": "سيدي عبد الله", "category": "housing" },
+      { "id": 37, "name": "1000 مسكن الزعترية", "client": "AADL", "location": "سيدي عبد الله", "category": "housing" },
+      { "id": 38, "name": "483 مسكن سيدي غيلاس", "client": "AADL", "location": "شرشال", "category": "housing" },
+      { "id": 39, "name": "550 مسكن سيدي غيلاس", "client": "AADL", "location": "شرشال", "category": "housing" },
+      { "id": 40, "name": "400 مسكن بروقية", "client": "AADL", "location": "المدية", "category": "housing" },
+      { "id": 41, "name": "500 مسكن بروقية", "client": "AADL", "location": "المدية", "category": "housing" },
+      { "id": 42, "name": "790 مسكن التينة", "client": "AADL", "location": "بومرداس", "category": "housing" },
+      { "id": 43, "name": "853 مسكن بني تامو", "client": "AADL", "location": "البليدة", "category": "housing" },
+      { "id": 44, "name": "237 مسكن LPL + 78 محل تجاري", "client": "ENPI", "location": "كاف الحمام، أولاد يعيش، البليدة", "category": "housing" },
+      { "id": 45, "name": "600 مسكن صباط الرويبة", "client": "OPGI BMR", "location": "الجزائر", "category": "housing" },
+      { "id": 46, "name": "294 و 157 مسكن", "client": "OPGI H.DEY", "location": "بئر توتة والرغاية", "category": "housing" },
+      { "id": 47, "name": "مركز إصلاحي 1000 مكان", "client": "وزارة العدل", "location": "وطني", "category": "infrastructure" },
+      { "id": 48, "name": "المركب الأولمبي محمد بوضياف", "client": "OCO", "location": "الجزائر", "category": "infrastructure" },
+      { "id": 49, "name": "توسيع مقر وزارة البرلمان", "client": "وزارة العلاقات مع البرلمان", "location": "الجزائر", "category": "infrastructure" },
+      { "id": 50, "name": "محطة الجزائر البحرية", "client": "E.P.Al", "location": "الجزائر", "category": "infrastructure" },
+      { "id": 51, "name": "منشآت خرسانة مسلحة وهياكل معدنية", "client": "E.P.Al", "location": "الجزائر", "category": "infrastructure" },
+      { "id": 52, "name": "محطة كهربائية مسعد 60/30 كيلو فولت", "client": "سونلغاز", "location": "الجلفة", "category": "infrastructure" },
+      { "id": 53, "name": "محطة كهربائية زريعة 60/30 كيلو فولت", "client": "سونلغاز", "location": "الجلفة", "category": "infrastructure" },
+      { "id": 54, "name": "مركز مراقبة الملاحة الجوية", "client": "ENNA", "location": "واد السمار", "category": "infrastructure" },
+      { "id": 55, "name": "معدات الكهرباء والتكييف للمجلس الشعبي الوطني", "client": "المجلس الشعبي الوطني", "location": "الجزائر", "category": "infrastructure" }
+    ],
+    "featured": [
       {
-        "id": "all",
-        "label": "كل المشاريع"
+        "id": "lycee-bouinan",
+        "title": "ثانوية 1000 مقعد - بوينان",
+        "client": "AADL",
+        "location": "موقع 10000 مسكن - بوينان",
+        "category": "education",
+        "description": "بناء ثانوية بسعة 1000 مقعد مع بنية تحتية كاملة. المشروع يشمل كتل تعليمية وإدارية ومعدات رياضية.",
+        "images": [
+          "images/projects/lycee-bouinan/image1.jpeg",
+          "images/projects/lycee-bouinan/image3.jpeg",
+          "images/projects/lycee-bouinan/image4.jpeg",
+          "images/projects/lycee-bouinan/image5.jpeg",
+          "images/projects/lycee-bouinan/image6.jpeg",
+          "images/projects/lycee-bouinan/image7.jpeg"
+        ]
       },
       {
-        "id": "housing",
-        "label": "السكن"
+        "id": "logements-berrouaghia",
+        "title": "400 مسكن بيع إيجاري",
+        "client": "AADL",
+        "location": "بروقية، ولاية المدية",
+        "category": "housing",
+        "description": "دراسة وإنجاز 400 مسكن بيع إيجاري بجميع الأشغال (TCE) مع محلات تجارية ومهنية، ودار حراسة بدون VRD.",
+        "images": [
+          "images/projects/berrouaghia/image1.jpeg",
+          "images/projects/berrouaghia/image2.jpeg",
+          "images/projects/berrouaghia/image3.jpeg",
+          "images/projects/berrouaghia/image4.jpeg",
+          "images/projects/berrouaghia/image5.jpeg"
+        ]
       },
       {
-        "id": "industrial",
-        "label": "الصناعة"
+        "id": "logements-sidi-ghiles",
+        "title": "483 مسكن AADL - سيدي غيلاس",
+        "client": "AADL",
+        "location": "بلدية سيدي غيلاس - تيبازة",
+        "category": "housing",
+        "description": "مشروع 483 مسكن مع أشغال الحفر، الأساسات والهيكل. المتابعة والمراقبة التقنية تشمل اختبارات الخرسانة والتجويف.",
+        "images": [
+          "images/projects/Sidi Ghiles/image1.jpeg",
+          "images/projects/Sidi Ghiles/image2.jpeg",
+          "images/projects/Sidi Ghiles/image3.jpeg",
+          "images/projects/Sidi Ghiles/image4.jpeg",
+          "images/projects/Sidi Ghiles/image5.jpeg",
+          "images/projects/Sidi Ghiles/image6.jpeg",
+          "images/projects/Sidi Ghiles/image7.jpeg",
+          "images/projects/Sidi Ghiles/image8.jpeg",
+          "images/projects/Sidi Ghiles/image9.jpeg",
+          "images/projects/Sidi Ghiles/image10.jpeg",
+          "images/projects/Sidi Ghiles/image11.jpeg",
+          "images/projects/Sidi Ghiles/image12.jpeg",
+          "images/projects/Sidi Ghiles/image13.jpeg",
+          "images/projects/Sidi Ghiles/image14.jpeg",
+          "images/projects/Sidi Ghiles/image15.jpeg",
+          "images/projects/Sidi Ghiles/image16.jpeg",
+          "images/projects/Sidi Ghiles/image17.jpeg",
+          "images/projects/Sidi Ghiles/image18.jpeg"
+        ]
       },
       {
-        "id": "infrastructure",
-        "label": "الهياكل القاعدية"
-      },
-      {
-        "id": "education",
-        "label": "التعليم"
-      },
-      {
-        "id": "urban",
-        "label": "التعمير"
+        "id": "parc-industriel",
+        "title": "المنطقة الصناعية رأس الماء",
+        "client": "ANIREF",
+        "location": "سيدي بلعباس",
+        "category": "industrial",
+        "description": "إدارة المشروع لإنجاز المنطقة الصناعية رأس الماء على مساحة 100 هكتار. التهيئة الكاملة للمنطقة الصناعية.",
+        "images": [
+          "images/projects/Ras El Ma/image2.png"
+        ]
       }
     ]
+  },
+  "gallery": {
+    "title": "المشاريع البارزة بالصور",
+    "subtitle": "اكتشف إنجازاتنا الكبرى",
+    "viewProject": "عرض المشروع"
   },
   "contact": {
     "title": "اتصل بنا",
@@ -232,17 +291,30 @@
     "formSubjectPlaceholder": "موضوع رسالتك",
     "formMessage": "الرسالة *",
     "formMessagePlaceholder": "صف مشروعك أو طلبك...",
-    "formSubmit": "إرسال الرسالة"
+    "formSubmit": "إرسال الرسالة",
+    "sending": "جاري الإرسال...",
+    "successMessage": "تم إرسال الرسالة بنجاح! سنتواصل معك قريباً.",
+    "client": "العميل",
+    "location": "الموقع"
   },
-  "gallery": {
-    "title": "المشاريع البارزة بالصور",
-    "subtitle": "اكتشف إنجازاتنا الكبرى",
-    "viewProject": "عرض المشروع"
+  "categories": {
+    "housing": "السكن",
+    "industrial": "الصناعة",
+    "infrastructure": "الهياكل القاعدية",
+    "education": "التعليم",
+    "urban": "التعمير"
   },
   "footer": {
     "tagline": "التميز في الهندسة، العمارة والإشراف على المشاريع.",
     "navigation": "التنقل",
     "services": "خدماتنا",
+    "servicesList": [
+      "الإشراف على الأشغال",
+      "الدراسات المعمارية",
+      "الهندسة الصناعية",
+      "التهيئة والتعمير"
+    ],
+    "address": "23 شارع الإخوة قوراية، بئر خادم - الجزائر",
     "rights": "كل الحقوق محفوظة."
   }
 }

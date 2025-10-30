@@ -12,62 +12,29 @@
     "title": "Excellence en Ingénierie, Architecture et Supervision de Projets",
     "cta": "Découvrir nos projets",
     "stats": [
-      {
-        "number": "35+",
-        "label": "Professionnels"
-      },
-      {
-        "number": "50+",
-        "label": "Projets Majeurs"
-      },
-      {
-        "number": "20+",
-        "label": "Ans d'Expérience"
-      },
-      {
-        "number": "100K+",
-        "label": "Heures d'Intervention"
-      }
+      { "number": "35+", "label": "Professionnels" },
+      { "number": "50+", "label": "Projets Majeurs" },
+      { "number": "20+", "label": "Ans d'Expérience" },
+      { "number": "100K+", "label": "Heures d'Intervention" }
     ],
     "expertiseTitle": "Nos Expertises",
     "services": [
-      {
-        "title": "Architecture",
-        "desc": "Études architecturales complètes et génie civil"
-      },
-      {
-        "title": "Ingénierie Industrielle",
-        "desc": "Process, diagnostic et modernisation"
-      },
-      {
-        "title": "Urbanisme",
-        "desc": "PDAU, POS et études de viabilisation"
-      },
-      {
-        "title": "Supervision",
-        "desc": "OPC, maîtrise d'œuvre et contrôle"
-      }
+      { "title": "Architecture", "desc": "Études architecturales complètes et génie civil" },
+      { "title": "Ingénierie Industrielle", "desc": "Process, diagnostic et modernisation" },
+      { "title": "Urbanisme", "desc": "PDAU, POS et études de viabilisation" },
+      { "title": "Supervision", "desc": "OPC, maîtrise d'œuvre et contrôle" }
     ],
     "clientsTitle": "Nos Clients de Référence",
-    "clients": [
-      "Sonatrach",
-      "AADL",
-      "OPGI",
-      "Ministère Justice",
-      "ACC/ORASCOM",
-      "SONELGAZ",
-      "ANIREF",
-      "APN"
-    ]
+    "clients": ["AADL","OPGI","SONELGAZ","ANIREF","ACC/ORASCOM", "Sonatrach","APN", "Ministère Justice"]
   },
   "about": {
     "title": "À Propos de NAPRO",
     "subtitle": "Une entreprise algérienne d'excellence dans le domaine de l'ingénierie et de l'architecture.",
     "info": "Informations Générales",
     "juridic": "Forme Juridique",
-    "juridicVal": "Société par Actions",
+    "juridicVal": "Société par Actions (SPA)",
     "capital": "Capital Social",
-    "capitalVal": "52.000.000 DA",
+    "capitalVal": "52 000 000 DA",
     "address": "Siège Social",
     "addressVal": "23 Rue des frères Gouraya, Bir Khadem - Alger",
     "ceo": "Direction",
@@ -78,22 +45,10 @@
     "missionTags": "Excellence • Innovation • Fiabilité",
     "teamTitle": "Structure de l'Équipe",
     "team": [
-      {
-        "title": "Cadres Dirigeants",
-        "count": "04"
-      },
-      {
-        "title": "Ingénieurs & Cadres",
-        "count": "30"
-      },
-      {
-        "title": "Techniciens Supérieurs",
-        "count": "11"
-      },
-      {
-        "title": "Personnel Support",
-        "count": "05"
-      }
+      { "title": "Cadres Dirigeants", "count": "04" },
+      { "title": "Ingénieurs & Cadres", "count": "30" },
+      { "title": "Techniciens Supérieurs", "count": "11" },
+      { "title": "Personnel Support", "count": "05" }
     ],
     "techTitle": "Moyens Techniques",
     "tech": [
@@ -107,26 +62,11 @@
     ],
     "turnoverTitle": "Chiffre d'Affaires (HT)",
     "turnover": [
-      {
-        "year": "2024",
-        "amount": "17,5 M DA"
-      },
-      {
-        "year": "2023",
-        "amount": "30 M DA"
-      },
-      {
-        "year": "2022",
-        "amount": "09 M DA"
-      },
-      {
-        "year": "2021",
-        "amount": "41 M DA"
-      },
-      {
-        "year": "2020",
-        "amount": "63 M DA"
-      }
+      { "year": "2024", "amount": "17,5 M DA" },
+      { "year": "2023", "amount": "30 M DA" },
+      { "year": "2022", "amount": "09 M DA" },
+      { "year": "2021", "amount": "41 M DA" },
+      { "year": "2020", "amount": "63 M DA" }
     ]
   },
   "services": {
@@ -180,32 +120,151 @@
     "title": "Nos Projets",
     "subtitle": "Plus de 50 projets d'envergure nationale réalisés avec excellence.",
     "allProjects": "Tous nos Projets",
+    "projectsFound": "projet(s) trouvé(s)",
     "filters": [
+      { "id": "all", "label": "Tous les projets" },
+      { "id": "housing", "label": "Logements" },
+      { "id": "industrial", "label": "Industriel" },
+      { "id": "infrastructure", "label": "Infrastructure" },
+      { "id": "education", "label": "Enseignement" },
+      { "id": "urban", "label": "Urbanisme" }
+    ]
+  },
+   "projectsData": {
+    "all": [
+      { "id": 1, "name": "POS BOUKHLIFA", "client": "DUC", "location": "Bejaia", "category": "urban" },
+      { "id": 2, "name": "POS de l'agglomération de ASSORO", "client": "DUC", "location": "Tamanrasset", "category": "urban" },
+      { "id": 3, "name": "POS RAHMANIA Centre", "client": "ANSA", "location": "Rahmania", "category": "urban" },
+      { "id": 4, "name": "POS de BORDJ BOU ARRERIDJ Nord-Ouest", "client": "DUC", "location": "Bordj Bou Arreridj", "category": "urban" },
+      { "id": 5, "name": "POS Quartier SIDI BENNOUR", "client": "ANSA", "location": "Mahelma", "category": "urban" },
+      { "id": 6, "name": "POS Tahaggart", "client": "DUC", "location": "Tamanrasset", "category": "urban" },
+      { "id": 7, "name": "POS IFRI DJANET N°05", "client": "DUC", "location": "Illizi", "category": "urban" },
+      { "id": 8, "name": "POS BORDJ OMAR DRISS", "client": "DUC", "location": "Illizi", "category": "urban" },
+      { "id": 9, "name": "POS Tameridjt", "client": "DUC", "location": "Bejaia", "category": "urban" },
+      { "id": 10, "name": "Cimenterie M'sila - Génie Civil", "client": "ACC/ORASCOM", "location": "M'sila", "category": "industrial" },
+      { "id": 11, "name": "Cimenterie Oggaz/Sig - Génie Civil", "client": "CIBA/ORASCOM", "location": "Sig", "category": "industrial" },
+      { "id": 12, "name": "Cimenterie Chlef - Silos à clincker", "client": "ECDE", "location": "Chlef", "category": "industrial" },
+      { "id": 13, "name": "Supervision projets Sonatrach Hassi Messaoud (24 mois)", "client": "Sonatrach/DP", "location": "Hassi Messaoud", "category": "industrial" },
+      { "id": 14, "name": "Supervision projets Sonatrach In Amenas (12 mois)", "client": "Sonatrach/RTI", "location": "In Amenas", "category": "industrial" },
+      { "id": 15, "name": "Supervision projets Sonatrach Bejaia (24 mois)", "client": "Sonatrach/TRC", "location": "Béjaia", "category": "industrial" },
+      { "id": 16, "name": "Supervision projets Sonatrach Hassi R'mel", "client": "Sonatrach/DP", "location": "Hassi R'mel", "category": "industrial" },
+      { "id": 17, "name": "Assistance technique Sonatrach Ourhoud", "client": "Sonatrach/Ourhoud", "location": "Hassi Messaoud", "category": "industrial" },
+      { "id": 18, "name": "Supervision projets Sonatrach HMD (36 mois)", "client": "Sonatrach/DP/HMD", "location": "Hassi Messaoud", "category": "industrial" },
+      { "id": 19, "name": "Aménagement piscine Base IRARA", "client": "Sonatrach/DP/HMD", "location": "Hassi Messaoud", "category": "industrial" },
+      { "id": 20, "name": "Réhabilitation usines Peaux et Cuirs", "client": "Tanneries", "location": "Djijel, Djelfa, El Amiria, Batna, Bejaia", "category": "industrial" },
+      { "id": 21, "name": "Parking 200 places camions - Cimenterie", "client": "ACC/LAFARGE", "location": "Hamma el dalaa, M'sila", "category": "industrial" },
+      { "id": 22, "name": "Parc Industriel Ras El Ma (100 Ha)", "client": "ANIREF", "location": "Sidi Bel Abbes", "category": "industrial" },
+      { "id": 23, "name": "Lycée 1000 places Bouinan", "client": "AADL", "location": "Bouinan", "category": "education" },
+      { "id": 24, "name": "05 Collèges type B6", "client": "AADL", "location": "Bouinan", "category": "education" },
+      { "id": 25, "name": "06 Groupes scolaires type D", "client": "AADL", "location": "Sidi Abdallah", "category": "education" },
+      { "id": 26, "name": "15000 logements Bouinan", "client": "AADL", "location": "Bouinan", "category": "housing" },
+      { "id": 27, "name": "1000 logements FADES", "client": "OPGI Birmandreis", "location": "Alger", "category": "housing" },
+      { "id": 28, "name": "748 logements LSP Baba Hacène", "client": "OPGI Hussein Dey", "location": "Alger", "category": "housing" },
+      { "id": 29, "name": "439 logements TCE DAS Chaabane", "client": "AADL", "location": "Ain Benian", "category": "housing" },
+      { "id": 30, "name": "780 logements VRD Mahelma", "client": "AADL", "location": "Mahelma", "category": "housing" },
+      { "id": 31, "name": "114 logements sociaux", "client": "OPGI Birmandreis", "location": "Alger", "category": "housing" },
+      { "id": 32, "name": "1270 logements sociaux", "client": "OPGI BLIDA", "location": "Blida", "category": "housing" },
+      { "id": 33, "name": "189 logements sociaux", "client": "AADL Said Hamdine", "location": "Alger", "category": "housing" },
+      { "id": 34, "name": "500 logements TCE Meftah (18 mois)", "client": "OPGI BLIDA", "location": "Blida", "category": "housing" },
+      { "id": 35, "name": "2000 logements ROUKHI SOUIDANIA", "client": "OPGI Hussein Dey", "location": "Alger", "category": "housing" },
+      { "id": 36, "name": "2000 logements Rahmania", "client": "AADL", "location": "Sidi Abdallah", "category": "housing" },
+      { "id": 37, "name": "1000 logements Zaatria", "client": "AADL", "location": "Sidi Abdallah", "category": "housing" },
+      { "id": 38, "name": "483 logements Sidi Ghiles", "client": "AADL", "location": "Cherchell", "category": "housing" },
+      { "id": 39, "name": "550 logements Sidi Ghiles", "client": "AADL", "location": "Cherchell", "category": "housing" },
+      { "id": 40, "name": "400 logements Berrouaghia", "client": "AADL", "location": "Médéa", "category": "housing" },
+      { "id": 41, "name": "500 logements Berrouaghia", "client": "AADL", "location": "Médéa", "category": "housing" },
+      { "id": 42, "name": "790 logements Figuier", "client": "AADL", "location": "Boumerdes", "category": "housing" },
+      { "id": 43, "name": "853 logements Beni Tamou", "client": "AADL", "location": "Blida", "category": "housing" },
+      { "id": 44, "name": "237 logements LPL + 78 commerces", "client": "ENPI", "location": "Kaf El Hmam, Ouled Yaich, Blida", "category": "housing" },
+      { "id": 45, "name": "600 logements Sbaat-Rouiba", "client": "OPGI BMR", "location": "Alger", "category": "housing" },
+      { "id": 46, "name": "294 et 157 logements", "client": "OPGI H.DEY", "location": "Birtouta et Reghaia", "category": "housing" },
+      { "id": 47, "name": "Centre Pénitentiaire 1000 places", "client": "Ministère Justice", "location": "National", "category": "infrastructure" },
+      { "id": 48, "name": "Complexe Olympique Mohamed Boudiaf", "client": "OCO", "location": "Alger", "category": "infrastructure" },
+      { "id": 49, "name": "Extension siège Ministère Parlement", "client": "Ministère relations avec le parlement", "location": "Alger", "category": "infrastructure" },
+      { "id": 50, "name": "Gare Maritime d'Alger", "client": "E.P.Al", "location": "Alger", "category": "infrastructure" },
+      { "id": 51, "name": "Ouvrages en béton armé et charpente métallique", "client": "E.P.Al", "location": "Alger", "category": "infrastructure" },
+      { "id": 52, "name": "Poste électrique MESSAAD 60/30KV", "client": "SONELGAZ", "location": "Djelfa", "category": "infrastructure" },
+      { "id": 53, "name": "Poste électrique Zerreah 60/30KV", "client": "SONELGAZ", "location": "Djelfa", "category": "infrastructure" },
+      { "id": 54, "name": "Centre de Contrôle Navigation Aérienne", "client": "ENNA", "location": "Oued Smar", "category": "infrastructure" },
+      { "id": 55, "name": "Equipement Electricité et Climatisation APN", "client": "Assemblee Populaire Nationale", "location": "Alger", "category": "infrastructure" }
+    ],
+    "featured": [
       {
-        "id": "all",
-        "label": "Tous les projets"
+        "id": "lycee-bouinan",
+        "title": "Lycée 1000 places - Bouinan",
+        "client": "AADL",
+        "location": "Site 10000 logements - Bouinan",
+        "category": "education",
+        "description": "Construction d'un lycée de 1000 places avec infrastructure complète. Projet incluant blocs pédagogiques, administratifs et équipements sportifs.",
+        "images": [
+          "images/projects/lycee-bouinan/image1.jpeg",
+          "images/projects/lycee-bouinan/image3.jpeg",
+          "images/projects/lycee-bouinan/image4.jpeg",
+          "images/projects/lycee-bouinan/image5.jpeg",
+          "images/projects/lycee-bouinan/image6.jpeg",
+          "images/projects/lycee-bouinan/image7.jpeg"
+        ]
       },
       {
-        "id": "housing",
-        "label": "Logements"
+        "id": "logements-berrouaghia",
+        "title": "400 Logements Location-Vente",
+        "client": "AADL",
+        "location": "Berrouaghia, Wilaya de Médéa",
+        "category": "housing",
+        "description": "Étude et réalisation de 400 logements location-vente en tous Corps d'État (TCE) avec locaux à usage commercial et professionnel, conciergeries sans VRD.",
+        "images": [
+          "images/projects/berrouaghia/image1.jpeg",
+          "images/projects/berrouaghia/image2.jpeg",
+          "images/projects/berrouaghia/image3.jpeg",
+          "images/projects/berrouaghia/image4.jpeg",
+          "images/projects/berrouaghia/image5.jpeg"
+        ]
       },
       {
-        "id": "industrial",
-        "label": "Industriel"
+        "id": "logements-sidi-ghiles",
+        "title": "483 Logements AADL - Sidi Ghiles",
+        "client": "AADL",
+        "location": "Commune de Sidi Ghiles - Tipaza",
+        "category": "housing",
+        "description": "Projet de 483 logements avec travaux de terrassement, fondations et structure. Suivi et contrôle technique incluant tests de béton et carottage.",
+        "images": [
+          "images/projects/Sidi Ghiles/image1.jpeg",
+          "images/projects/Sidi Ghiles/image2.jpeg",
+          "images/projects/Sidi Ghiles/image3.jpeg",
+          "images/projects/Sidi Ghiles/image4.jpeg",
+          "images/projects/Sidi Ghiles/image5.jpeg",
+          "images/projects/Sidi Ghiles/image6.jpeg",
+          "images/projects/Sidi Ghiles/image7.jpeg",
+          "images/projects/Sidi Ghiles/image8.jpeg",
+          "images/projects/Sidi Ghiles/image9.jpeg",
+          "images/projects/Sidi Ghiles/image10.jpeg",
+          "images/projects/Sidi Ghiles/image11.jpeg",
+          "images/projects/Sidi Ghiles/image12.jpeg",
+          "images/projects/Sidi Ghiles/image13.jpeg",
+          "images/projects/Sidi Ghiles/image14.jpeg",
+          "images/projects/Sidi Ghiles/image15.jpeg",
+          "images/projects/Sidi Ghiles/image16.jpeg",
+          "images/projects/Sidi Ghiles/image17.jpeg",
+          "images/projects/Sidi Ghiles/image18.jpeg"
+        ]
       },
       {
-        "id": "infrastructure",
-        "label": "Infrastructure"
-      },
-      {
-        "id": "education",
-        "label": "Enseignement"
-      },
-      {
-        "id": "urban",
-        "label": "Urbanisme"
+        "id": "parc-industriel",
+        "title": "Parc Industriel Ras El Ma",
+        "client": "ANIREF",
+        "location": "Sidi Bel Abbes",
+        "category": "industrial",
+        "description": "Maîtrise d'œuvre pour la réalisation du Parc Industriel de Ras El Ma sur 100 hectares. Aménagement complet du territoire industriel.",
+        "images": [
+          "images/projects/Ras El Ma/image2.png"
+        ]
       }
     ]
+  },
+  "gallery": {
+    "title": "Projets Phares en Images",
+    "subtitle": "Découvrez nos réalisations majeures",
+    "viewProject": "Voir le projet"
   },
   "contact": {
     "title": "Contactez-Nous",
@@ -232,17 +291,30 @@
     "formSubjectPlaceholder": "Sujet de votre message",
     "formMessage": "Message *",
     "formMessagePlaceholder": "Décrivez votre projet ou votre demande...",
-    "formSubmit": "Envoyer le message"
+    "formSubmit": "Envoyer le message",
+    "sending": "Envoi en cours...",
+    "successMessage": "Message envoyé avec succès! Nous vous contacterons bientôt.",
+    "client": "Client",
+    "location": "Localisation"
   },
-  "gallery": {
-    "title": "Projets Phares en Images",
-    "subtitle": "Découvrez nos réalisations majeures",
-    "viewProject": "Voir le projet"
+  "categories": {
+    "housing": "Logement",
+    "industrial": "Industriel",
+    "infrastructure": "Infrastructure",
+    "education": "Enseignement",
+    "urban": "Urbanisme"
   },
   "footer": {
     "tagline": "Excellence en Ingénierie, Architecture et Supervision de Projets.",
     "navigation": "Navigation",
     "services": "Nos Services",
+    "servicesList": [
+      "Supervision des Travaux",
+      "Études d'Architecture",
+      "Ingénierie Industrielle",
+      "Aménagement et Urbanisme"
+    ],
+    "address": "23 Rue des frères Gouraya, Bir Khadem - Alger",
     "rights": "Tous droits réservés."
   }
 }

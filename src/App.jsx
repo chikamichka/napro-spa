@@ -5,527 +5,14 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Building2, Users, Briefcase, Phone, Menu, X, ChevronRight, ChevronLeft,
   Award, MapPin, 
-  Mail, Target, TrendingUp, CheckCircle, ArrowRight, Sun, Moon, Globe, ExternalLink,
-  FileText, Calendar, MapPinned
+  Mail, Target, TrendingUp, CheckCircle, ArrowRight, Sun, Moon, Globe,
+  MapPinned
 } from 'lucide-react';
 import * as THREE from 'three';
-import emailjs from '@emailjs/browser';
+import { useTranslation } from 'react-i18next';
+import './i18n';
 
-// --- UPDATED TRANSLATIONS WITH ABOUT, SERVICES, AND CONTACT SECTIONS ---
-const translations = {
-  fr: {
-    nav: {
-      home: "Accueil",
-      about: "À Propos",
-      services: "Services",
-      projects: "Projets",
-      contact: "Contact",
-      gallery: "Galerie"
-    },
-    home: {
-      subtitle: "National Techno-Project",
-      title: "Excellence en Ingénierie, Architecture et Supervision de Projets",
-      cta: "Découvrir nos projets",
-      stats: [
-        { number: '35+', label: 'Professionnels' },
-        { number: '50+', label: 'Projets Majeurs' },
-        { number: '20+', label: 'Ans d\'Expérience' },
-        { number: '100K+', label: 'Heures d\'Intervention' }
-      ],
-      expertiseTitle: "Nos Expertises",
-      services: [
-        { title: 'Architecture', desc: 'Études architecturales complètes et génie civil' },
-        { title: 'Ingénierie Industrielle', desc: 'Process, diagnostic et modernisation' },
-        { title: 'Urbanisme', desc: 'PDAU, POS et études de viabilisation' },
-        { title: 'Supervision', desc: 'OPC, maîtrise d\'œuvre et contrôle' }
-      ],
-      clientsTitle: "Nos Clients de Référence",
-      clients: ['Sonatrach', 'AADL', 'OPGI', 'Ministère Justice', 'ACC/ORASCOM', 'SONELGAZ', 'ANIREF', 'APN']
-    },
-    about: {
-      title: "À Propos de NAPRO",
-      subtitle: "Une entreprise algérienne d'excellence dans le domaine de l'ingénierie et de l'architecture.",
-      info: "Informations Générales",
-      juridic: "Forme Juridique",
-      juridicVal: "Société par Actions",
-      capital: "Capital Social",
-      capitalVal: "52.000.000 DA",
-      address: "Siège Social",
-      addressVal: "23 Rue des frères Gouraya, Bir Khadem - Alger",
-      ceo: "Direction",
-      ceoVal: "Mr. BOUKHELKHAL HACENE - PDG",
-      missionTitle: "Notre Mission",
-      missionText1: "NAPRO s'est imposée comme un acteur majeur dans les domaines de l'architecture, du génie civil, de l'ingénierie industrielle et de l'urbanisme.",
-      missionText2: "Avec plus de 20 années d'expérience, nous avons développé une expertise reconnue dans la supervision et le contrôle de projets d'envergure nationale.",
-      missionTags: "Excellence • Innovation • Fiabilité",
-      teamTitle: "Structure de l'Équipe",
-      team: [
-        { title: 'Cadres Dirigeants', count: '04' },
-        { title: 'Ingénieurs & Cadres', count: '30' },
-        { title: 'Techniciens Supérieurs', count: '11' },
-        { title: 'Personnel Support', count: '05' }
-      ],
-      techTitle: "Moyens Techniques",
-      tech: [
-        '44 Micro-ordinateurs + 3 portables',
-        'Logiciels CAO/DAO (AutoCAD 2008-2013)',
-        'Station Topographique LEICA TS 02',
-        'Logiciels de calcul (SAP 2000)',
-        'SIG: Atlas GIS, Map Info',
-        'Matériel de contrôle du béton',
-        '6 Véhicules de service'
-      ],
-      turnoverTitle: "Chiffre d'Affaires (HT)",
-      turnover: [
-        { year: '2024', amount: '17,5 M DA' },
-        { year: '2023', amount: '30 M DA' },
-        { year: '2022', amount: '09 M DA' },
-        { year: '2021', amount: '41 M DA' },
-        { year: '2020', amount: '63 M DA' }
-      ]
-    },
-    services: {
-      title: "Nos Services",
-      subtitle: "Des prestations complètes dans tous les domaines de l'ingénierie et de l'architecture.",
-      list: [
-        {
-          title: 'Direction de la Supervision des Travaux',
-          items: [
-            'Ordonnancement, Pilotage et Coordination (O.P.C)',
-            'Maîtrise d\'œuvre d\'exécution',
-            'Levés topographiques, Bornages',
-            'Études parcellaires et Implantations',
-            'Cartographie'
-          ]
-        },
-        {
-          title: 'Direction des Études d\'Architecture',
-          items: [
-            'Études d\'Architecture (Esquisse, A.P.D)',
-            'Projets d\'exécution',
-            'Études de Génie Civil',
-            'Études des C.E.S (Corps d\'États Secondaires)',
-            'VRD (Voiries et Réseaux Divers)'
-          ]
-        },
-        {
-          title: 'Direction de l\'Ingénierie Industrielle',
-          items: [
-            'Études de Process',
-            'Diagnostic Technique',
-            'Études de Rénovation',
-            'Modernisation d\'Unités Industrielles',
-            'Missions d\'ensemblier',
-            'Maîtrise complète de projets',
-            'Études énergétiques'
-          ]
-        },
-        {
-          title: 'Direction des Études d\'Aménagement et d\'Urbanisme',
-          items: [
-            'Études des Plans Directeurs d\'Aménagement et d\'Urbanisme (PDAU)',
-            'Études des Plans d\'Occupation des Sols (POS)',
-            'Études de viabilisation',
-            'Aménagement du territoire'
-          ]
-        }
-      ]
-    },
-    projects: {
-      title: "Nos Projets",
-      subtitle: "Plus de 50 projets d'envergure nationale réalisés avec excellence.",
-      allProjects: "Tous nos Projets",
-      filters: [
-        { id: 'all', label: 'Tous les projets' },
-        { id: 'housing', label: 'Logements' },
-        { id: 'industrial', label: 'Industriel' },
-        { id: 'infrastructure', label: 'Infrastructure' },
-        { id: 'education', label: 'Enseignement' },
-        { id: 'urban', label: 'Urbanisme' }
-      ]
-    },
-    contact: {
-      title: "Contactez-Nous",
-      subtitle: "Notre équipe est à votre disposition pour étudier vos projets.",
-      infoTitle: "Informations de Contact",
-      phone: "Téléphone",
-      fax: "Fax",
-      email: "Email",
-      address: "Adresse",
-      addressVal: "23 Rue des frères Gouraya\nBir Khadem - Alger\nAlgérie",
-      hoursTitle: "Horaires d'ouverture",
-      weekdays: "Dimanche - Jeudi",
-      weekdaysHours: "08:00 - 17:00",
-      weekends: "Vendredi - Samedi",
-      weekendsHours: "Fermé",
-      formTitle: "Envoyez-nous un message",
-      formName: "Nom complet *",
-      formNamePlaceholder: "Votre nom",
-      formEmail: "Email *",
-      formEmailPlaceholder: "votre@email.com",
-      formPhone: "Téléphone",
-      formPhonePlaceholder: "+213 XXX XXX XXX",
-      formSubject: "Sujet *",
-      formSubjectPlaceholder: "Sujet de votre message",
-      formMessage: "Message *",
-      formMessagePlaceholder: "Décrivez votre projet ou votre demande...",
-      formSubmit: "Envoyer le message"
-    },
-    gallery: {
-      title: "Projets Phares en Images",
-      subtitle: "Découvrez nos réalisations majeures",
-      viewProject: "Voir le projet"
-    },
-    footer: {
-      tagline: "Excellence en Ingénierie, Architecture et Supervision de Projets.",
-      navigation: "Navigation",
-      services: "Nos Services",
-      rights: "Tous droits réservés."
-    },
-  },
-  en: {
-    nav: {
-      home: "Home",
-      about: "About Us",
-      services: "Services",
-      projects: "Projects",
-      contact: "Contact",
-      gallery: "Gallery"
-    },
-    home: {
-      subtitle: "National Techno-Project",
-      title: "Excellence in Engineering, Architecture, and Project Supervision",
-      cta: "Discover our projects",
-      stats: [
-        { number: '35+', label: 'Professionals' },
-        { number: '50+', label: 'Major Projects' },
-        { number: '20+', label: 'Years of Experience' },
-        { number: '100K+', label: 'Intervention Hours' }
-      ],
-      expertiseTitle: "Our Expertise",
-      services: [
-        { title: 'Architecture', desc: 'Comprehensive architectural studies and civil engineering' },
-        { title: 'Industrial Engineering', desc: 'Process, diagnostics, and modernization' },
-        { title: 'Urban Planning', desc: 'PDAU, POS, and feasibility studies' },
-        { title: 'Supervision', desc: 'OPC, project management, and control' }
-      ],
-      clientsTitle: "Our Key Clients",
-      clients: ['Sonatrach', 'AADL', 'OPGI', 'Ministry of Justice', 'ACC/ORASCOM', 'SONELGAZ', 'ANIREF', 'APN']
-    },
-    about: {
-      title: "About NAPRO",
-      subtitle: "An Algerian company of excellence in the field of engineering and architecture.",
-      info: "General Information",
-      juridic: "Legal Form",
-      juridicVal: "Joint-stock company (SPA)",
-      capital: "Social Capital",
-      capitalVal: "52,000,000 DZD",
-      address: "Head Office",
-      addressVal: "23 Gouraya Brothers Street, Bir Khadem - Algiers",
-      ceo: "Management",
-      ceoVal: "Mr. BOUKHELKHAL HACENE - CEO",
-      missionTitle: "Our Mission",
-      missionText1: "NAPRO has established itself as a major player in the fields of architecture, civil engineering, industrial engineering, and urban planning.",
-      missionText2: "With over 20 years of experience, we have developed recognized expertise in the supervision and control of large-scale national projects.",
-      missionTags: "Excellence • Innovation • Reliability",
-      teamTitle: "Team Structure",
-      team: [
-        { title: 'Executive Managers', count: '04' },
-        { title: 'Engineers & Managers', count: '30' },
-        { title: 'Senior Technicians', count: '11' },
-        { title: 'Support Staff', count: '05' }
-      ],
-      techTitle: "Technical Resources",
-      tech: [
-        '44 PCs + 3 Laptops',
-        'CAD/DAO Software (AutoCAD 2008-2013)',
-        'LEICA TS 02 Total Station',
-        'Calculation Software (SAP 2000)',
-        'GIS: Atlas GIS, Map Info',
-        'Concrete testing equipment',
-        '6 Service Vehicles'
-      ],
-      turnoverTitle: "Turnover (Excl. Tax)",
-      turnover: [
-        { year: '2024', amount: '17.5M DZD' },
-        { year: '2023', amount: '30M DZD' },
-        { year: '2022', amount: '09M DZD' },
-        { year: '2021', amount: '41M DZD' },
-        { year: '2020', amount: '63M DZD' }
-      ]
-    },
-    services: {
-      title: "Our Services",
-      subtitle: "Comprehensive services in all fields of engineering and architecture.",
-      list: [
-        {
-          title: 'Works Supervision Department',
-          items: [
-            'Scheduling, Piloting, and Coordination (OPC)',
-            'Execution Project Management',
-            'Topographical Surveys, Demarcations',
-            'Plot Studies and Layouts',
-            'Cartography'
-          ]
-        },
-        {
-          title: 'Architectural Studies Department',
-          items: [
-            'Architectural Studies (Sketch, Preliminary Design)',
-            'Execution Projects',
-            'Civil Engineering Studies',
-            'Secondary Building Services (CES) Studies',
-            'VRD (Roads and Various Networks)'
-          ]
-        },
-        {
-          title: 'Industrial Engineering Department',
-          items: [
-            'Process Studies',
-            'Technical Diagnostics',
-            'Renovation Studies',
-            'Modernization of Industrial Units',
-            'Turnkey Missions',
-            'Complete Project Management',
-            'Energy Studies'
-          ]
-        },
-        {
-          title: 'Planning and Urbanism Studies Department',
-          items: [
-            'Master Plans for Development and Urbanism (PDAU) Studies',
-            'Land Use Plans (POS) Studies',
-            'Viability Studies',
-            'Territorial Planning'
-          ]
-        }
-      ]
-    },
-    projects: {
-      title: "Our Projects",
-      subtitle: "Over 50 large-scale national projects completed with excellence.",
-      allProjects: "All Our Projects",
-      filters: [
-        { id: 'all', label: 'All Projects' },
-        { id: 'housing', label: 'Housing' },
-        { id: 'industrial', label: 'Industrial' },
-        { id: 'infrastructure', label: 'Infrastructure' },
-        { id: 'education', label: 'Education' },
-        { id: 'urban', label: 'Urban Planning' }
-      ]
-    },
-    contact: {
-      title: "Contact Us",
-      subtitle: "Our team is available to study your projects.",
-      infoTitle: "Contact Information",
-      phone: "Phone",
-      fax: "Fax",
-      email: "Email",
-      address: "Address",
-      addressVal: "23 Gouraya Brothers Street\nBir Khadem - Algiers\nAlgeria",
-      hoursTitle: "Opening Hours",
-      weekdays: "Sunday - Thursday",
-      weekdaysHours: "08:00 - 17:00",
-      weekends: "Friday - Saturday",
-      weekendsHours: "Closed",
-      formTitle: "Send us a message",
-      formName: "Full name *",
-      formNamePlaceholder: "Your name",
-      formEmail: "Email *",
-      formEmailPlaceholder: "your@email.com",
-      formPhone: "Phone",
-      formPhonePlaceholder: "+213 XXX XXX XXX",
-      formSubject: "Subject *",
-      formSubjectPlaceholder: "Subject of your message",
-      formMessage: "Message *",
-      formMessagePlaceholder: "Describe your project or request...",
-      formSubmit: "Send Message"
-    },
-    gallery: {
-      title: "Featured Projects Gallery",
-      subtitle: "Discover our major achievements",
-      viewProject: "View Project"
-    },
-    footer: {
-      tagline: "Excellence in Engineering, Architecture, and Project Supervision.",
-      navigation: "Navigation",
-      services: "Our Services",
-      rights: "All rights reserved."
-    },
-  },
-  ar: {
-    nav: {
-      home: "الرئيسية",
-      about: "عن الشركة",
-      services: "الخدمات",
-      projects: "المشاريع",
-      contact: "اتصل بنا",
-      gallery: "المعرض"
-    },
-    home: {
-      subtitle: "المؤسسة الوطنية للمشاريع التقنية",
-      title: "التميز في الهندسة، العمارة والإشراف على المشاريع",
-      cta: "اكتشف مشاريعنا",
-      stats: [
-        { number: '+35', label: 'محترف' },
-        { number: '+50', label: 'مشروع كبير' },
-        { number: '+20', label: 'سنة خبرة' },
-        { number: '+100K', label: 'ساعة تدخل' }
-      ],
-      expertiseTitle: "خبراتنا",
-      services: [
-        { title: 'الهندسة المعمارية', desc: 'دراسات معمارية متكاملة وهندسة مدنية' },
-        { title: 'الهندسة الصناعية', desc: 'دراسة العمليات، التشخيص والتحديث' },
-        { title: 'التعمير', desc: 'مخططات التهيئة والتعمير ودراسات الجدوى' },
-        { title: 'الإشراف', desc: 'التنظيم، الإدارة والمراقبة (OPC)' }
-      ],
-      clientsTitle: "عملاؤنا المرجعيون",
-      clients: ['سوناطراك', 'AADL', 'OPGI', 'وزارة العدل', 'ACC/ORASCOM', 'سونلغاز', 'ANIREF', 'APN']
-    },
-    about: {
-      title: "عن مؤسسة نابرو (NAPRO)",
-      subtitle: "شركة جزائرية للتميز في مجال الهندسة والعمارة.",
-      info: "معلومات عامة",
-      juridic: "الشكل القانوني",
-      juridicVal: "شركة مساهمة (SPA)",
-      capital: "رأس المال الاجتماعي",
-      capitalVal: "52.000.000 دج",
-      address: "المقر الاجتماعي",
-      addressVal: "23 شارع الإخوة قوراية، بئر خادم - الجزائر",
-      ceo: "الإدارة",
-      ceoVal: "السيد بوخلخال حسين - رئيس مجلس الإدارة والمدير العام",
-      missionTitle: "مهمتنا",
-      missionText1: "رسخت نابرو مكانتها كفاعل رئيسي في مجالات الهندسة المعمارية، الهندسة المدنية، الهندسة الصناعية والتعمير.",
-      missionText2: "بفضل أكثر من 20 عامًا من الخبرة، طورنا خبرة معترف بها في الإشراف والتحكم في المشاريع الوطنية الكبرى.",
-      missionTags: "التميز • الابتكار • الموثوقية",
-      teamTitle: "هيكل الفريق",
-      team: [
-        { title: 'إطارات تنفيذية', count: '04' },
-        { title: 'مهندسون وإطارات', count: '30' },
-        { title: 'تقنيون سامون', count: '11' },
-        { title: 'موظفو دعم', count: '05' }
-      ],
-      techTitle: "الوسائل التقنية",
-      tech: [
-        '44 حاسوب مكتبي + 3 حواسيب محمولة',
-        'برامج CAD/DAO (AutoCAD 2008-2013)',
-        'محطة طوبوغرافية LEICA TS 02',
-        'برامج الحساب (SAP 2000)',
-        'نظم المعلومات الجغرافية (GIS): Atlas GIS, Map Info',
-        'معدات اختبار الخرسانة',
-        '6 مركبات خدمة'
-      ],
-      turnoverTitle: "رقم الأعمال (بدون احتساب الرسوم)",
-      turnover: [
-        { year: '2024', amount: '17.5 م دج' },
-        { year: '2023', amount: '30 م دج' },
-        { year: '2022', amount: '09 م دج' },
-        { year: '2021', amount: '41 م دج' },
-        { year: '2020', amount: '63 م دج' }
-      ]
-    },
-    services: {
-      title: "خدماتنا",
-      subtitle: "خدمات شاملة في جميع مجالات الهندسة والعمارة.",
-      list: [
-        {
-          title: 'مديرية الإشراف على الأشغال',
-          items: [
-            'الجدولة، الإدارة والتنسيق (OPC)',
-            'إدارة مشاريع التنفيذ',
-            'المسح الطبوغرافي، التحديد',
-            'دراسات الأقسام والتطبيق الميداني',
-            'الخرائط'
-          ]
-        },
-        {
-          title: 'مديرية الدراسات المعمارية',
-          items: [
-            'الدراسات المعمارية (الرسم الأولي، التصميم الأولي المفصل)',
-            'مشاريع التنفيذ',
-            'دراسات الهندسة المدنية',
-            'دراسات الأشغال الثانوية للمباني (CES)',
-            'الطرق والشبكات المختلفة (VRD)'
-          ]
-        },
-        {
-          title: 'مديرية الهندسة الصناعية',
-          items: [
-            'دراسات العمليات',
-            'التشخيص التقني',
-            'دراسات التجديد',
-            'تحديث الوحدات الصناعية',
-            'مهام المقاول الشامل',
-            'الإدارة الكاملة للمشاريع',
-            'دراسات الطاقة'
-          ]
-        },
-        {
-          title: 'مديرية دراسات التهيئة والتعمير',
-          items: [
-            'دراسات المخططات التوجيهية للتهيئة والتعمير (PDAU)',
-            'دراسات مخططات شغل الأراضي (POS)',
-            'دراسات الجدوى',
-            'تهيئة الإقليم'
-          ]
-        }
-      ]
-    },
-    projects: {
-      title: "مشاريعنا",
-      subtitle: "أكثر من 50 مشروعًا وطنيًا كبيرًا تم إنجازها بامتياز.",
-      allProjects: "جميع مشاريعنا",
-      filters: [
-        { id: 'all', label: 'كل المشاريع' },
-        { id: 'housing', label: 'السكن' },
-        { id: 'industrial', label: 'الصناعة' },
-        { id: 'infrastructure', label: 'الهياكل القاعدية' },
-        { id: 'education', label: 'التعليم' },
-        { id: 'urban', label: 'التعمير' }
-      ]
-    },
-    contact: {
-      title: "اتصل بنا",
-      subtitle: "فريقنا تحت تصرفكم لدراسة مشاريعكم.",
-      infoTitle: "معلومات الاتصال",
-      phone: "الهاتف",
-      fax: "الفاكس",
-      email: "البريد الإلكتروني",
-      address: "العنوان",
-      addressVal: "23 شارع الإخوة قوراية\nبئر خادم - الجزائر\nالجزائر",
-      hoursTitle: "ساعات العمل",
-      weekdays: "الأحد - الخميس",
-      weekdaysHours: "08:00 - 17:00",
-      weekends: "الجمعة - السبت",
-      weekendsHours: "مغلق",
-      formTitle: "أرسل لنا رسالة",
-      formName: "الاسم الكامل *",
-      formNamePlaceholder: "اسمك",
-      formEmail: "البريد الإلكتروني *",
-      formEmailPlaceholder: "your@email.com",
-      formPhone: "رقم الهاتف",
-      formPhonePlaceholder: "+213 XXX XXX XXX",
-      formSubject: "الموضوع *",
-      formSubjectPlaceholder: "موضوع رسالتك",
-      formMessage: "الرسالة *",
-      formMessagePlaceholder: "صف مشروعك أو طلبك...",
-      formSubmit: "إرسال الرسالة"
-    },
-    gallery: {
-      title: "المشاريع البارزة بالصور",
-      subtitle: "اكتشف إنجازاتنا الكبرى",
-      viewProject: "عرض المشروع"
-    },
-    footer: {
-      tagline: "التميز في الهندسة، العمارة والإشراف على المشاريع.",
-      navigation: "التنقل",
-      services: "خدماتنا",
-      rights: "كل الحقوق محفوظة."
-    },
-  }
-};
-
-// All 50+ projects from the document (kept as is)
+// All 50+ projects from the document
 const allProjects = [
   // Urban Planning Projects
   { id: 1, name: 'POS BOUKHLIFA', client: 'DUC', location: 'Bejaia', category: 'urban' },
@@ -593,7 +80,7 @@ const allProjects = [
   { id: 55, name: 'Equipement Electricité et Climatisation APN', client: 'Assemblee Populaire Nationale', location: 'Alger', category: 'infrastructure' }
 ];
 
-// --- FEATURED PROJECTS UPDATED WITH IMAGE PATHS (kept as is) ---
+// Featured projects with images
 const featuredProjects = [
   {
     id: 'lycee-bouinan',
@@ -671,21 +158,14 @@ const AppContext = createContext();
 
 const AppProvider = ({ children }) => {
   const [theme, setTheme] = useState('dark');
-  const [language, setLanguage] = useState('fr');
 
   const toggleTheme = () => {
     setTheme((prevTheme) => (prevTheme === 'dark' ? 'light' : 'dark'));
   };
 
-  const changeLanguage = (lang) => {
-    setLanguage(lang);
-  };
-
-  const t = translations[language];
-
   return (
-    <AppContext.Provider value={{ theme, toggleTheme, language, changeLanguage, t }}>
-      <div className={`${theme} ${language === 'ar' ? 'dir-rtl' : 'dir-ltr'}`}>
+    <AppContext.Provider value={{ theme, toggleTheme }}>
+      <div className={theme}>
         {children}
       </div>
     </AppContext.Provider>
@@ -694,7 +174,7 @@ const AppProvider = ({ children }) => {
 
 const useApp = () => useContext(AppContext);
 
-// This is your new, improved component
+// Company Logo Component
 function CompanyLogo({ className = "", size = "normal" }) {
   const sizeClasses = {
     small: "w-10 h-10",
@@ -702,7 +182,6 @@ function CompanyLogo({ className = "", size = "normal" }) {
     large: "w-24 h-24",
   };
 
-  // We apply size, custom classes, and our color classes all at once
   const combinedClassName = `${sizeClasses[size]} ${className} transition-all duration-500 ease-in-out`;
 
   return (
@@ -712,16 +191,9 @@ function CompanyLogo({ className = "", size = "normal" }) {
       viewBox="0 0 93.000000 79.000000"
       preserveAspectRatio="xMidYMid meet"
       stroke="none"
-      // This is the magic line:
-      // We set the fill color directly using Tailwind
-      // It will be #1f3a8a by default, and white in dark mode
       className={`${combinedClassName} fill-[#1f3a8a] dark:fill-white`}
     >
       <g transform="translate(0.000000,79.000000) scale(0.100000,-0.100000)">
-        {/* I have copied your <path> data below.
-          Notice the original 'fill="#000000"' is REMOVED from the <g> tag 
-          so it can be controlled by the parent <svg> tag's className.
-        */}
         <path d="M271 602 l-184 -157 57 -3 c77 -4 62 -22 -18 -22 -58 0 -65 -2 -81 -27 -15 -23 -16 -28 -3 -37 8 -6 108 -85 222 -176 115 -91 211 -164 215 -164 11 2 370 309 370 317 1 10 -78 9 -117 -3 -29 -8 -79 -46 -189 -144 l-23 -19 0 91 0 92 173 0 c153 1 174 3 195 19 12 11 22 22 22 25 0 7 -441 365 -450 366 -3 0 -88 -71 -189 -158z m326 17 c76 -62 168 -136 206 -167 37 -30 67 -58 67 -62 0 -15 -81 -19 -397 -21 -178 0 -323 -3 -323 -5 0 -5 318 -264 325 -264 3 0 61 47 128 103 106 90 177 133 177 107 0 -5 -53 -52 -117 -106 -64 -55 -130 -111 -147 -126 -17 -15 -35 -27 -39 -28 -5 0 -101 73 -213 162 -162 129 -201 165 -191 175 9 9 106 14 356 20 l345 8 -140 114 c-76 63 -147 121 -156 129 -16 13 -28 4 -134 -92 -109 -99 -120 -106 -158 -106 l-41 1 50 42 c27 23 97 83 155 134 58 50 106 92 107 92 2 1 65 -49 140 -110z m-14 -118 c42 -35 77 -68 77 -73 0 -13 -14 -3 -107 74 -45 37 -86 68 -90 68 -5 0 -45 -34 -91 -76 -45 -42 -87 -74 -93 -72 -6 2 33 43 86 91 96 85 98 86 119 69 12 -9 57 -46 99 -81z m-68 -36 c22 -18 36 -37 32 -41 -4 -4 -23 8 -42 26 l-35 34 -33 -32 c-48 -47 -68 -39 -22 8 21 22 44 40 50 40 5 -1 28 -16 50 -35z m-93 -202 c2 -49 3 -89 2 -91 -1 -2 -47 34 -102 80 l-99 83 91 6 c50 3 94 6 97 7 4 1 9 -37 11 -85z m58 -20 c0 -54 3 -73 10 -63 5 8 10 11 10 5 0 -17 -14 -31 -30 -30 -9 0 -14 8 -11 20 2 11 4 48 5 83 2 90 16 77 16 -15z" />
       </g>
     </svg>
@@ -733,11 +205,10 @@ function Building3D() {
   const { theme } = useApp();
   const isDark = theme === 'dark';
 
-  const structureColor = isDark ? '#60a5fa' : '#d6a46e';   // light terracotta-sand, warm and structural  
-  const groundColor = isDark ? '#334155' : '#faf6f0';      // pale stone / cream background (architectural paper tone)  
-  const accentColor = isDark ? '#f59e0b' : '#f5b342';      // soft golden amber (sunlight warmth)  
-  const glowingColor = isDark ? '#3b82f6' : '#c5ccd6';     // light steel-gray with a hint of blue (glass/metal highlight)
-   // soft steel gray-blue glow — evokes metal or glass
+  const structureColor = isDark ? '#60a5fa' : '#d6a46e';
+  const groundColor = isDark ? '#334155' : '#faf6f0';
+  const accentColor = isDark ? '#f59e0b' : '#f5b342';
+  const glowingColor = isDark ? '#3b82f6' : '#c5ccd6';
 
   const WireframeBox = ({ position, args, color }) => (
     <group position={position}>
@@ -828,7 +299,8 @@ function Building3D() {
 
 // Home Page
 function HomePage({ navigate }) {
-  const { theme, t } = useApp();
+  const { theme } = useApp();
+  const { t } = useTranslation();
   const isDark = theme === 'dark';
 
   return (
@@ -854,15 +326,15 @@ function HomePage({ navigate }) {
               <CompanyLogo className="text-blue-600 dark:text-blue-400" size="large" />
               <h1 className="text-5xl md:text-7xl font-bold text-blue-900 dark:text-white">NAPRO</h1>
             </div>
-            <p className="text-2xl md:text-3xl text-blue-800 dark:text-blue-300 mb-4 font-semibold">{t.home.subtitle}</p>
-            <p className="text-xl text-slate-800 dark:text-gray-200 mb-8 max-w-3xl mx-auto font-medium">{t.home.title}</p>
+            <p className="text-2xl md:text-3xl text-blue-800 dark:text-blue-300 mb-4 font-semibold">{t('home.subtitle')}</p>
+            <p className="text-xl text-slate-800 dark:text-gray-200 mb-8 max-w-3xl mx-auto font-medium">{t('home.title')}</p>
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={() => navigate('projects')}
               className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold inline-flex items-center gap-2 shadow-xl dark:shadow-blue-500/30"
             >
-              {t.home.cta} <ChevronRight />
+              {t('home.cta')} <ChevronRight />
             </motion.button>
           </motion.div>
         </div>
@@ -870,7 +342,7 @@ function HomePage({ navigate }) {
 
       <section className="py-20 bg-white/80 dark:bg-slate-800/50 backdrop-blur">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {t.home.stats.map((stat, i) => (
+          {t('home.stats', { returnObjects: true }).map((stat, i) => (
             <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">{stat.number}</div>
               <div className="text-slate-700 dark:text-gray-300 font-medium">{stat.label}</div>
@@ -882,10 +354,10 @@ function HomePage({ navigate }) {
       <section className="py-20 px-4 bg-slate-100 dark:bg-slate-900/50">
         <div className="max-w-6xl mx-auto">
           <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center mb-16">
-            {t.home.expertiseTitle}
+            {t('home.expertiseTitle')}
           </motion.h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {t.home.services.map((service, i) => (
+            {t('home.services', { returnObjects: true }).map((service, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
@@ -910,9 +382,9 @@ function HomePage({ navigate }) {
 
       <section className="py-20 bg-white/80 dark:bg-slate-800/50 backdrop-blur px-4">
         <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-12">{t.home.clientsTitle}</h2>
+          <h2 className="text-4xl font-bold text-slate-900 dark:text-white mb-12">{t('home.clientsTitle')}</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {t.home.clients.map((client, i) => (
+            {t('home.clients', { returnObjects: true }).map((client, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0 }}
@@ -932,7 +404,7 @@ function HomePage({ navigate }) {
 
 // About Page
 function AboutPage() {
-  const { t } = useApp();
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-slate-100 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-900 dark:to-slate-900 py-32 px-4">
       <div className="max-w-6xl mx-auto">
@@ -941,47 +413,46 @@ function AboutPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t.about.title}</h1>
+          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t('about.title')}</h1>
           <p className="text-xl text-slate-700 dark:text-gray-300 max-w-3xl mx-auto">
-            {t.about.subtitle}
+            {t('about.subtitle')}
           </p>
         </motion.div>
 
-        {/* Company Info */}
         <div className="grid md:grid-cols-2 gap-8 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-blue-500/20 shadow-lg dark:shadow-none"
           >
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t.about.info}</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('about.info')}</h2>
             <div className="space-y-4 text-slate-600 dark:text-gray-300">
               <div className="flex items-start gap-3">
                 <Building2 className="text-blue-600 dark:text-blue-400 mt-1" size={20} />
                 <div>
-                  <div className="font-semibold text-slate-800 dark:text-white">{t.about.juridic}</div>
-                  <div>{t.about.juridicVal}</div>
+                  <div className="font-semibold text-slate-800 dark:text-white">{t('about.juridic')}</div>
+                  <div>{t('about.juridicVal')}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <TrendingUp className="text-blue-600 dark:text-blue-400 mt-1" size={20} />
                 <div>
-                  <div className="font-semibold text-slate-800 dark:text-white">{t.about.capital}</div>
-                  <div>{t.about.capitalVal}</div>
+                  <div className="font-semibold text-slate-800 dark:text-white">{t('about.capital')}</div>
+                  <div>{t('about.capitalVal')}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin className="text-blue-600 dark:text-blue-400 mt-1" size={20} />
                 <div>
-                  <div className="font-semibold text-slate-800 dark:text-white">{t.about.address}</div>
-                  <div>{t.about.addressVal}</div>
+                  <div className="font-semibold text-slate-800 dark:text-white">{t('about.address')}</div>
+                  <div>{t('about.addressVal')}</div>
                 </div>
               </div>
               <div className="flex items-start gap-3">
                 <Users className="text-blue-600 dark:text-blue-400 mt-1" size={20} />
                 <div>
-                  <div className="font-semibold text-slate-800 dark:text-white">{t.about.ceo}</div>
-                  <div>{t.about.ceoVal}</div>
+                  <div className="font-semibold text-slate-800 dark:text-white">{t('about.ceo')}</div>
+                  <div>{t('about.ceoVal')}</div>
                 </div>
               </div>
             </div>
@@ -992,29 +463,28 @@ function AboutPage() {
             animate={{ opacity: 1, x: 0 }}
             className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-blue-500/20 shadow-lg dark:shadow-none"
           >
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t.about.missionTitle}</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('about.missionTitle')}</h2>
             <p className="text-slate-600 dark:text-gray-300 mb-4">
-              {t.about.missionText1}
+              {t('about.missionText1')}
             </p>
             <p className="text-slate-600 dark:text-gray-300 mb-4">
-              {t.about.missionText2}
+              {t('about.missionText2')}
             </p>
             <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400">
               <Target size={20} />
-              <span className="font-semibold">{t.about.missionTags}</span>
+              <span className="font-semibold">{t('about.missionTags')}</span>
             </div>
           </motion.div>
         </div>
 
-        {/* Team Structure */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-blue-500/20 mb-16 shadow-lg dark:shadow-none"
         >
-          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8 text-center">{t.about.teamTitle}</h2>
+          <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8 text-center">{t('about.teamTitle')}</h2>
           <div className="grid md:grid-cols-4 gap-6">
-            {t.about.team.map((item, i) => (
+            {t('about.team', { returnObjects: true }).map((item, i) => (
               <div key={i} className="text-center">
                 <div className="text-4xl font-bold text-blue-600 dark:text-blue-400 mb-2">{item.count}</div>
                 <div className="text-slate-600 dark:text-gray-300">{item.title}</div>
@@ -1023,16 +493,15 @@ function AboutPage() {
           </div>
         </motion.div>
 
-        {/* Certifications & Equipment */}
         <div className="grid md:grid-cols-2 gap-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-blue-500/20 shadow-lg dark:shadow-none"
           >
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t.about.techTitle}</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('about.techTitle')}</h2>
             <div className="space-y-3">
-              {t.about.tech.map((item, i) => (
+              {t('about.tech', { returnObjects: true }).map((item, i) => (
                 <div key={i} className="flex items-center gap-3 text-slate-600 dark:text-gray-300">
                   <CheckCircle className="text-green-500 dark:text-green-400" size={20} />
                   <span>{item}</span>
@@ -1046,9 +515,9 @@ function AboutPage() {
             whileInView={{ opacity: 1, y: 0 }}
             className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-blue-500/20 shadow-lg dark:shadow-none"
           >
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t.about.turnoverTitle}</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('about.turnoverTitle')}</h2>
             <div className="space-y-4">
-              {t.about.turnover.map((item, i) => (
+              {t('about.turnover', { returnObjects: true }).map((item, i) => (
                 <div key={i} className="flex justify-between items-center">
                   <span className="text-slate-600 dark:text-gray-300 font-semibold">{item.year}</span>
                   <span className="text-blue-600 dark:text-blue-400 text-xl font-bold">{item.amount}</span>
@@ -1062,10 +531,9 @@ function AboutPage() {
   );
 }
 
-
 // Services Page
 function ServicesPage() {
-  const { t } = useApp();
+  const { t } = useTranslation();
   const icons = [<Award size={40} />, <Building2 size={40} />, <Briefcase size={40} />, <MapPin size={40} />];
 
   return (
@@ -1076,14 +544,14 @@ function ServicesPage() {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-16"
         >
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t.services.title}</h1>
+          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t('services.title')}</h1>
           <p className="text-xl text-slate-700 dark:text-gray-300 max-w-3xl mx-auto">
-            {t.services.subtitle}
+            {t('services.subtitle')}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {t.services.list.map((service, i) => (
+          {t('services.list', { returnObjects: true }).map((service, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -1111,19 +579,28 @@ function ServicesPage() {
   );
 }
 
-
-// --- GALLERY PAGE UPDATED ---
+// Gallery Page
 function GalleryPage() {
-  const { t } = useApp();
+  const { t } = useTranslation();
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const featuredProjects = t('projectsData.featured', { returnObjects: true });
+  const getCategoryLabel = (category) => {
+    const labels = {
+      education: t('categories.education'),
+      housing: t('categories.housing'),
+      industrial: t('categories.industrial')
+    };
+    return labels[category] || category;
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-950 dark:to-slate-900 py-32 px-4">
       <div className="max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t.gallery.title}</h1>
-          <p className="text-xl text-slate-800 dark:text-gray-300 max-w-3xl mx-auto font-medium">{t.gallery.subtitle}</p>
+          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t('gallery.title')}</h1>
+          <p className="text-xl text-slate-800 dark:text-gray-300 max-w-3xl mx-auto font-medium">{t('gallery.subtitle')}</p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
@@ -1137,10 +614,9 @@ function GalleryPage() {
               className="bg-white dark:bg-slate-800/50 backdrop-blur rounded-xl border-2 border-slate-300 dark:border-blue-500/20 hover:border-blue-500 dark:hover:border-blue-500/50 transition-all shadow-xl cursor-pointer overflow-hidden"
               onClick={() => {
                 setSelectedProject(project);
-                setCurrentImageIndex(0); // Reset index when opening modal
+                setCurrentImageIndex(0);
               }}
             >
-              {/* Updated to show the first image */}
               <img 
                 src={project.images[0]} 
                 alt={project.title} 
@@ -1149,7 +625,7 @@ function GalleryPage() {
               />
               <div className="p-6">
                 <div className="inline-block bg-blue-100 dark:bg-blue-600/20 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full text-sm font-semibold mb-3">
-                  {project.category === 'education' ? 'Enseignement' : project.category === 'housing' ? 'Logement' : 'Industriel'}
+                  {getCategoryLabel(project.category)}
                 </div>
                 <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-2">{project.title}</h3>
                 <p className="text-slate-700 dark:text-gray-300 mb-4 line-clamp-3">{project.description}</p>
@@ -1164,7 +640,7 @@ function GalleryPage() {
                   </div>
                 </div>
                 <button className="mt-4 text-blue-600 dark:text-blue-400 font-semibold flex items-center gap-2 hover:gap-3 transition-all">
-                  {t.gallery.viewProject} <ArrowRight size={18} />
+                  {t('gallery.viewProject')} <ArrowRight size={18} />
                 </button>
               </div>
             </motion.div>
@@ -1172,7 +648,6 @@ function GalleryPage() {
         </div>
       </div>
 
-      {/* Project Detail Modal with Image Viewer */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -1186,7 +661,7 @@ function GalleryPage() {
               initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto" // Made modal wider
+              className="bg-white dark:bg-slate-800 p-8 rounded-xl shadow-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto"
               onClick={(e) => e.stopPropagation()}
             >
               <div className="flex justify-between items-start mb-6">
@@ -1196,10 +671,8 @@ function GalleryPage() {
                 </button>
               </div>
               
-              {/* --- NEW IMAGE VIEWER --- */}
               <div className="mb-6">
                 <div className="relative h-96 w-full bg-slate-200 dark:bg-slate-700 rounded-lg overflow-hidden flex items-center justify-center">
-                  {/* Main Image */}
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentImageIndex}
@@ -1214,28 +687,24 @@ function GalleryPage() {
                     />
                   </AnimatePresence>
 
-                  {/* Prev Button */}
                   {selectedProject.images.length > 1 && (
-                    <button
-                      onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? selectedProject.images.length - 1 : prev - 1))}
-                      className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-all z-10"
-                    >
-                      <ChevronLeft size={24} />
-                    </button>
-                  )}
-                  
-                  {/* Next Button */}
-                  {selectedProject.images.length > 1 && (
-                    <button
-                      onClick={() => setCurrentImageIndex((prev) => (prev === selectedProject.images.length - 1 ? 0 : prev + 1))}
-                      className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-all z-10"
-                    >
-                      <ChevronRight size={24} />
-                    </button>
+                    <>
+                      <button
+                        onClick={() => setCurrentImageIndex((prev) => (prev === 0 ? selectedProject.images.length - 1 : prev - 1))}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-all z-10"
+                      >
+                        <ChevronLeft size={24} />
+                      </button>
+                      <button
+                        onClick={() => setCurrentImageIndex((prev) => (prev === selectedProject.images.length - 1 ? 0 : prev + 1))}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 text-white p-2 rounded-full hover:bg-black/60 transition-all z-10"
+                      >
+                        <ChevronRight size={24} />
+                      </button>
+                    </>
                   )}
                 </div>
 
-                {/* Thumbnail Gallery */}
                 {selectedProject.images.length > 1 && (
                   <div className="mt-4 h-24 overflow-x-auto flex gap-2 p-1">
                     {selectedProject.images.map((img, i) => (
@@ -1253,7 +722,6 @@ function GalleryPage() {
                   </div>
                 )}
               </div>
-              {/* --- END NEW IMAGE VIEWER --- */}
               
               <div className="space-y-6">
                 <p className="text-lg text-slate-700 dark:text-gray-300">{selectedProject.description}</p>
@@ -1262,20 +730,18 @@ function GalleryPage() {
                   <div className="flex items-center gap-3 p-4 bg-slate-100 dark:bg-slate-900/50 rounded-lg">
                     <Users className="text-blue-600 dark:text-blue-400" size={24} />
                     <div>
-                      <div className="text-sm text-slate-600 dark:text-gray-400">Client</div>
+                      <div className="text-sm text-slate-600 dark:text-gray-400">{t('contact.client')}</div>
                       <div className="text-lg font-semibold text-slate-900 dark:text-white">{selectedProject.client}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3 p-4 bg-slate-100 dark:bg-slate-900/50 rounded-lg">
                     <MapPinned className="text-blue-600 dark:text-blue-400" size={24} />
                     <div>
-                      <div className="text-sm text-slate-600 dark:text-gray-400">Localisation</div>
+                      <div className="text-sm text-slate-600 dark:text-gray-400">{t('contact.location')}</div>
                       <div className="text-lg font-semibold text-slate-900 dark:text-white">{selectedProject.location}</div>
                     </div>
                   </div>
                 </div>
-
-                {/* Removed the old text-based image list */}
               </div>
             </motion.div>
           </motion.div>
@@ -1285,13 +751,15 @@ function GalleryPage() {
   );
 }
 
-// Projects Page - All 50+ Projects
+// Projects Page
 function ProjectsPage() {
-  const { t } = useApp();
+  const { t } = useTranslation();
   const [filter, setFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState(null);
 
+  const allProjects = t('projectsData.all', { returnObjects: true });
   const filteredProjects = filter === 'all' ? allProjects : allProjects.filter(p => p.category === filter);
+
 
   const categoryIcons = {
     housing: <Building2 size={24} />,
@@ -1301,25 +769,27 @@ function ProjectsPage() {
     urban: <MapPin size={24} />
   };
 
-  const categoryNames = {
-    housing: 'Logement',
-    industrial: 'Industriel',
-    infrastructure: 'Infrastructure',
-    education: 'Enseignement',
-    urban: 'Urbanisme'
+  const getCategoryLabel = (category) => {
+    const labels = {
+      housing: t('categories.housing'),
+      industrial: t('categories.industrial'),
+      infrastructure: t('categories.infrastructure'),
+      education: t('categories.education'),
+      urban: t('categories.urban')
+    };
+    return labels[category] || category;
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-950 dark:to-slate-900 py-32 px-4">
       <div className="max-w-7xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t.projects.title}</h1>
-          <p className="text-xl text-slate-800 dark:text-gray-300 max-w-3xl mx-auto font-medium">{t.projects.subtitle}</p>
+          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t('projects.title')}</h1>
+          <p className="text-xl text-slate-800 dark:text-gray-300 max-w-3xl mx-auto font-medium">{t('projects.subtitle')}</p>
         </motion.div>
 
-        {/* Filters */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {t.projects.filters.map((cat) => (
+          {t('projects.filters', { returnObjects: true }).map((cat) => (
             <button
               key={cat.id}
               onClick={() => setFilter(cat.id)}
@@ -1334,14 +804,12 @@ function ProjectsPage() {
           ))}
         </div>
 
-        {/* Projects Count */}
         <div className="text-center mb-8">
           <p className="text-lg text-slate-700 dark:text-gray-300">
-            <span className="font-bold text-blue-600 dark:text-blue-400">{filteredProjects.length}</span> {filter === 'all' ? 'projets au total' : 'projet(s) trouvé(s)'}
+            <span className="font-bold text-blue-600 dark:text-blue-400">{filteredProjects.length}</span> {t('projects.projectsFound')}
           </p>
         </div>
 
-        {/* Projects Grid */}
         <motion.div layout className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           <AnimatePresence>
             {filteredProjects.map((project) => (
@@ -1360,7 +828,7 @@ function ProjectsPage() {
                     {categoryIcons[project.category]}
                   </div>
                   <span className="text-xs bg-blue-100 dark:bg-blue-600/20 text-blue-800 dark:text-blue-300 px-3 py-1 rounded-full font-medium">
-                    {categoryNames[project.category]}
+                    {getCategoryLabel(project.category)}
                   </span>
                 </div>
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 line-clamp-2">
@@ -1382,7 +850,6 @@ function ProjectsPage() {
         </motion.div>
       </div>
 
-      {/* Project Detail Modal */}
       <AnimatePresence>
         {selectedProject && (
           <motion.div
@@ -1413,21 +880,21 @@ function ProjectsPage() {
               
               <div className="space-y-4">
                 <div className="inline-block bg-blue-100 dark:bg-blue-600/20 text-blue-800 dark:text-blue-300 px-4 py-2 rounded-full font-medium">
-                  {categoryNames[selectedProject.category]}
+                  {getCategoryLabel(selectedProject.category)}
                 </div>
                 
                 <div className="border-t-2 border-slate-200 dark:border-slate-700 pt-4 space-y-3">
                   <div className="flex items-center gap-3">
                     <Users className="text-blue-600 dark:text-blue-400" size={24} />
                     <div>
-                      <div className="text-sm text-slate-600 dark:text-gray-400">Client</div>
+                      <div className="text-sm text-slate-600 dark:text-gray-400">{t('contact.client')}</div>
                       <div className="text-lg font-semibold text-slate-900 dark:text-white">{selectedProject.client}</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-3">
                     <MapPin className="text-blue-600 dark:text-blue-400" size={24} />
                     <div>
-                      <div className="text-sm text-slate-600 dark:text-gray-400">Localisation</div>
+                      <div className="text-sm text-slate-600 dark:text-gray-400">{t('contact.location')}</div>
                       <div className="text-lg font-semibold text-slate-900 dark:text-white">{selectedProject.location}</div>
                     </div>
                   </div>
@@ -1441,9 +908,9 @@ function ProjectsPage() {
   );
 }
 
-// Contact Page with EmailJS
+// Contact Page
 function ContactPage() {
-  const { t } = useApp();
+  const { t } = useTranslation();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -1457,82 +924,34 @@ function ContactPage() {
   const [isError, setIsError] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
-  // ⚠️ IMPORTANT: Replace these with your actual EmailJS credentials
-  const EMAILJS_SERVICE_ID = 'YOUR_SERVICE_ID';  // From Step 3
-  const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID'; // From Step 4
-  const EMAILJS_PUBLIC_KEY = 'YOUR_PUBLIC_KEY';   // From Step 5
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSending(true);
     
-    // --- THIS IS A DEMO ---
-    // Since I don't have your EmailJS credentials, I'll simulate a successful send.
-    // Replace this block with the emailjs.send() call when you're ready.
     console.log("Simulating email send with data:", formData);
     setTimeout(() => {
-      setModalMessage('Message envoyé avec succès! Nous vous contacterons bientôt.');
+      setModalMessage(t('contact.successMessage'));
       setIsError(false);
       setModalOpen(true);
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
       setIsSending(false);
     }, 1500);
-    // --- END DEMO BLOCK ---
-
-    /*
-    // --- UNCOMMENT THIS BLOCK AND ADD YOUR CREDENTIALS ---
-    // Prepare template parameters
-    const templateParams = {
-      from_name: formData.name,
-      from_email: formData.email,
-      phone: formData.phone || 'Non fourni',
-      subject: formData.subject,
-      message: formData.message,
-      to_email: 'contact@napro.dz' // Your company email
-    };
-
-    // Send email via EmailJS
-    emailjs.send(
-      EMAILJS_SERVICE_ID,
-      EMAILJS_TEMPLATE_ID,
-      templateParams,
-      EMAILJS_PUBLIC_KEY
-    )
-    .then((response) => {
-      console.log('SUCCESS!', response.status, response.text);
-      setModalMessage('Message envoyé avec succès! Nous vous contacterons bientôt.');
-      setIsError(false);
-      setModalOpen(true);
-      // Reset form
-      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
-    })
-    .catch((error) => {
-      console.error('FAILED...', error);
-      setModalMessage('Erreur lors de l\'envoi du message. Veuillez réessayer ou nous contacter directement par téléphone.');
-      setIsError(true);
-      setModalOpen(true);
-    })
-    .finally(() => {
-      setIsSending(false);
-    });
-    // --- END EMAILJS BLOCK ---
-    */
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-950 dark:to-slate-900 py-32 px-4">
       <div className="max-w-6xl mx-auto">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">Contactez-Nous</h1>
+          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t('contact.title')}</h1>
           <p className="text-xl text-slate-800 dark:text-gray-300 font-medium">
-            Notre équipe est à votre disposition pour étudier vos projets.
+            {t('contact.subtitle')}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
             <div className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Informations de Contact</h2>
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('contact.infoTitle')}</h2>
               
               <div className="space-y-6">
                 <div className="flex items-start gap-4">
@@ -1540,7 +959,7 @@ function ContactPage() {
                     <Phone className="text-blue-600 dark:text-blue-400" size={24} />
                   </div>
                   <div>
-                    <div className="text-slate-900 dark:text-white font-semibold mb-1">Téléphone</div>
+                    <div className="text-slate-900 dark:text-white font-semibold mb-1">{t('contact.phone')}</div>
                     <div className="text-slate-700 dark:text-gray-300">+213 028 53 89 80</div>
                   </div>
                 </div>
@@ -1550,7 +969,7 @@ function ContactPage() {
                     <Phone className="text-blue-600 dark:text-blue-400" size={24} />
                   </div>
                   <div>
-                    <div className="text-slate-900 dark:text-white font-semibold mb-1">Fax</div>
+                    <div className="text-slate-900 dark:text-white font-semibold mb-1">{t('contact.fax')}</div>
                     <div className="text-slate-700 dark:text-gray-300">+213 028 53 89 78</div>
                   </div>
                 </div>
@@ -1560,7 +979,7 @@ function ContactPage() {
                     <Mail className="text-blue-600 dark:text-blue-400" size={24} />
                   </div>
                   <div>
-                    <div className="text-slate-900 dark:text-white font-semibold mb-1">Email</div>
+                    <div className="text-slate-900 dark:text-white font-semibold mb-1">{t('contact.email')}</div>
                     <a href="mailto:contact@napro.dz" className="text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">contact@napro.dz</a>
                   </div>
                 </div>
@@ -1570,11 +989,9 @@ function ContactPage() {
                     <MapPin className="text-blue-600 dark:text-blue-400" size={24} />
                   </div>
                   <div>
-                    <div className="text-slate-900 dark:text-white font-semibold mb-1">Adresse</div>
-                    <div className="text-slate-700 dark:text-gray-300">
-                      23 Rue des frères Gouraya<br/>
-                      Bir Khadem - Alger<br/>
-                      Algérie
+                    <div className="text-slate-900 dark:text-white font-semibold mb-1">{t('contact.address')}</div>
+                    <div className="text-slate-700 dark:text-gray-300 whitespace-pre-line">
+                      {t('contact.addressVal')}
                     </div>
                   </div>
                 </div>
@@ -1582,79 +999,79 @@ function ContactPage() {
             </div>
 
             <div className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Horaires d'ouverture</h3>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{t('contact.hoursTitle')}</h3>
               <div className="space-y-2 text-slate-700 dark:text-gray-300">
                 <div className="flex justify-between">
-                  <span className="font-medium">Dimanche - Jeudi</span>
-                  <span className="text-blue-600 dark:text-blue-400 font-semibold">08:00 - 17:00</span>
+                  <span className="font-medium">{t('contact.weekdays')}</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-semibold">{t('contact.weekdaysHours')}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="font-medium">Vendredi - Samedi</span>
-                  <span className="text-slate-500 dark:text-gray-500">Fermé</span>
+                  <span className="font-medium">{t('contact.weekends')}</span>
+                  <span className="text-slate-500 dark:text-gray-500">{t('contact.weekendsHours')}</span>
                 </div>
               </div>
             </div>
           </motion.div>
 
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">Envoyez-nous un message</h2>
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('contact.formTitle')}</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">Nom complet *</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formName')}</label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({...formData, name: e.target.value})}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
-                  placeholder="Votre nom"
+                  placeholder={t('contact.formNamePlaceholder')}
                   disabled={isSending}
                 />
               </div>
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">Email *</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formEmail')}</label>
                 <input
                   type="email"
                   required
                   value={formData.email}
                   onChange={(e) => setFormData({...formData, email: e.target.value})}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
-                  placeholder="votre@email.com"
+                  placeholder={t('contact.formEmailPlaceholder')}
                   disabled={isSending}
                 />
               </div>
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">Téléphone</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formPhone')}</label>
                 <input
                   type="tel"
                   value={formData.phone}
                   onChange={(e) => setFormData({...formData, phone: e.target.value})}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
-                  placeholder="+213 XXX XXX XXX"
+                  placeholder={t('contact.formPhonePlaceholder')}
                   disabled={isSending}
                 />
               </div>
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">Sujet *</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formSubject')}</label>
                 <input
                   type="text"
                   required
                   value={formData.subject}
                   onChange={(e) => setFormData({...formData, subject: e.target.value})}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
-                  placeholder="Sujet de votre message"
+                  placeholder={t('contact.formSubjectPlaceholder')}
                   disabled={isSending}
                 />
               </div>
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">Message *</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formMessage')}</label>
                 <textarea
                   required
                   value={formData.message}
                   onChange={(e) => setFormData({...formData, message: e.target.value})}
                   rows={5}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors resize-none"
-                  placeholder="Décrivez votre projet ou votre demande..."
+                  placeholder={t('contact.formMessagePlaceholder')}
                   disabled={isSending}
                 />
               </div>
@@ -1672,11 +1089,11 @@ function ContactPage() {
                 {isSending ? (
                   <>
                     <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    Envoi en cours...
+                    {t('contact.sending')}
                   </>
                 ) : (
                   <>
-                    Envoyer le message <ArrowRight size={20} />
+                    {t('contact.formSubmit')} <ArrowRight size={20} />
                   </>
                 )}
               </motion.button>
@@ -1723,14 +1140,16 @@ function ContactPage() {
 
 // Language Switcher
 function LanguageSwitcher() {
-  const { language, changeLanguage } = useApp();
+  const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
+  
   const languages = [
-    { code: 'fr', label: 'Français' },
-    { code: 'en', label: 'English' },
-    { code: 'ar', label: 'العربية' },
+    { code: 'fr', label: 'Français', flag: '🇫🇷' },
+    { code: 'en', label: 'English', flag: '🇬🇧' },
+    { code: 'ar', label: 'العربية', flag: '🇩🇿' },
   ];
-  const currentLang = languages.find(l => l.code === language);
+  
+  const currentLang = languages.find(l => l.code === i18n.language) || languages[0];
 
   return (
     <div className="relative">
@@ -1753,15 +1172,17 @@ function LanguageSwitcher() {
               <button
                 key={lang.code}
                 onClick={() => {
-                  changeLanguage(lang.code);
+                  i18n.changeLanguage(lang.code);
+                  document.documentElement.dir = lang.code === 'ar' ? 'rtl' : 'ltr';
                   setIsOpen(false);
                 }}
                 className={`block w-full px-4 py-2 text-start text-sm ${
-                  language === lang.code
+                  i18n.language === lang.code
                     ? 'bg-blue-500 text-white font-semibold'
                     : 'text-slate-800 dark:text-gray-200 hover:bg-slate-100 dark:hover:bg-slate-700'
                 }`}
               >
+                <span className="me-2">{lang.flag}</span>
                 {lang.label}
               </button>
             ))}
@@ -1788,7 +1209,7 @@ function ThemeToggle() {
 
 // Main App
 function App() {
-  const { t, language } = useApp();
+  const { t, i18n } = useTranslation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState('home');
 
@@ -1799,16 +1220,16 @@ function App() {
   };
 
   const navItems = [
-    { id: 'home', label: t.nav.home },
-    { id: 'about', label: t.nav.about },
-    { id: 'services', label: 'Services' }, // This wasn't in your translations, keeping as-is
-    { id: 'gallery', label: t.nav.gallery },
-    { id: 'projects', label: t.nav.projects },
-    { id: 'contact', label: t.nav.contact },
+    { id: 'home', label: t('nav.home') },
+    { id: 'about', label: t('nav.about') },
+    { id: 'services', label: t('nav.services') },
+    { id: 'gallery', label: t('nav.gallery') },
+    { id: 'projects', label: t('nav.projects') },
+    { id: 'contact', label: t('nav.contact') },
   ];
 
   return (
-    <div className="min-h-screen" dir={language === 'ar' ? 'rtl' : 'ltr'}>
+    <div className="min-h-screen" dir={i18n.language === 'ar' ? 'rtl' : 'ltr'}>
       <nav className="fixed w-full z-40 bg-white/90 dark:bg-slate-900/95 backdrop-blur border-b-2 border-slate-300 dark:border-slate-800 shadow-md">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <button onClick={() => navigate('home')} className="flex items-center gap-3 text-2xl font-bold text-blue-800 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
@@ -1896,13 +1317,13 @@ function App() {
                 <span>NAPRO</span>
               </button>
               <p className="text-sm text-slate-700 dark:text-gray-400 font-medium">
-                {t.footer.tagline}
+                {t('footer.tagline')}
               </p>
             </div>
 
             <div>
               <h3 className="font-bold mb-4 text-slate-900 dark:text-white">
-                {t.footer.navigation}
+                {t('footer.navigation')}
               </h3>
               <div className="space-y-2 text-sm">
                 {navItems.filter(item => item.id !== 'contact').map((page) => (
@@ -1919,19 +1340,18 @@ function App() {
 
             <div>
               <h3 className="font-bold mb-4 text-slate-900 dark:text-white">
-                Services
+                {t('footer.services')}
               </h3>
               <div className="space-y-2 text-sm text-slate-700 dark:text-gray-400">
-                <div className="font-medium">Supervision des Travaux</div>
-                <div className="font-medium">Études d'Architecture</div>
-                <div className="font-medium">Ingénierie Industrielle</div>
-                <div className="font-medium">Aménagement et Urbanisme</div>
+                {t('footer.servicesList', { returnObjects: true }).map((service, i) => (
+                  <div key={i} className="font-medium">{service}</div>
+                ))}
               </div>
             </div>
 
             <div>
               <h3 className="font-bold mb-4 text-slate-900 dark:text-white">
-                Contact
+                {t('contact.title')}
               </h3>
               <div className="space-y-3 text-sm text-slate-700 dark:text-gray-400">
                 <div className="flex items-center gap-2">
@@ -1944,14 +1364,14 @@ function App() {
                 </div>
                 <div className="flex items-start gap-2">
                   <MapPin size={16} className="mt-1 flex-shrink-0 text-blue-600 dark:text-blue-400" />
-                  <span className="font-medium">23 Rue des frères Gouraya, Bir Khadem - Alger</span>
+                  <span className="font-medium">{t('footer.address')}</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="border-t-2 border-slate-300 dark:border-slate-800 pt-8 text-center text-sm text-slate-700 dark:text-gray-500">
-            <p className="font-medium">© {new Date().getFullYear()} NAPRO - {t.home.subtitle}. {t.footer.rights}</p>
+            <p className="font-medium">© {new Date().getFullYear()} NAPRO - {t('home.subtitle')}. {t('footer.rights')}</p>
           </div>
         </div>
       </footer>
