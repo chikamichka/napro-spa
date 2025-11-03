@@ -11,6 +11,8 @@ import {
 import * as THREE from 'three';
 import { useTranslation } from 'react-i18next';
 import './i18n';
+import emailjs from '@emailjs/browser';
+
 
 // All 50+ projects from the document
 const allProjects = [
@@ -83,6 +85,29 @@ const allProjects = [
 // Featured projects with images
 const featuredProjects = [
   {
+    id: 'parc-industriel',
+    title: 'Parc Industriel Ras El Ma',
+    client: 'ANIREF',
+    location: 'Sidi Bel Abbes',
+    category: 'industrial',
+    description: 'Maîtrise d\'œuvre pour la réalisation du Parc Industriel de Ras El Ma sur 100 hectares. Aménagement complet du territoire industriel.',
+    images: [
+      'images/projects/Ras El Ma/image2.png',
+      'images/projects/Ras El Ma/002-R2.png',
+      'images/projects/Ras El Ma/003-R.png',
+      'images/projects/Ras El Ma/89-R2.png',
+      'images/projects/Ras El Ma/89-R4.png',
+      'images/projects/Ras El Ma/91-R4.png',
+      'images/projects/Ras El Ma/91-R6.png',
+      'images/projects/Ras El Ma/94-R.png',
+      'images/projects/Ras El Ma/94-R2.png',
+      'images/projects/Ras El Ma/96-R.png',
+      'images/projects/Ras El Ma/96-R2.png',
+      'images/projects/Ras El Ma/97-R2.png',
+      'images/projects/Ras El Ma/98-R.png'
+    ]
+  },
+  {
     id: 'lycee-bouinan',
     title: 'Lycée 1000 places - Bouinan',
     client: 'AADL',
@@ -139,17 +164,6 @@ const featuredProjects = [
       'images/projects/Sidi Ghiles/image16.jpeg',
       'images/projects/Sidi Ghiles/image17.jpeg',
       'images/projects/Sidi Ghiles/image18.jpeg'
-    ]
-  },
-  {
-    id: 'parc-industriel',
-    title: 'Parc Industriel Ras El Ma',
-    client: 'ANIREF',
-    location: 'Sidi Bel Abbes',
-    category: 'industrial',
-    description: 'Maîtrise d\'œuvre pour la réalisation du Parc Industriel de Ras El Ma sur 100 hectares. Aménagement complet du territoire industriel.',
-    images: [
-      'images/projects/Ras El Ma/image2.png'
     ]
   }
 ];
@@ -924,18 +938,58 @@ function ContactPage() {
   const [isError, setIsError] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
-  const handleSubmit = (e) => {
+  // 🔧 OPTION A: Using Environment Variables (RECOMMENDED)
+  const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+  const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+  const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+  // 🔧 OPTION B: Direct Values (for testing - NOT RECOMMENDED for production)
+  // const EMAILJS_SERVICE_ID = 'service_xxxxxx';
+  // const EMAILJS_TEMPLATE_ID = 'template_xxxxxx';
+  // const EMAILJS_PUBLIC_KEY = 'xxxxxxxxxxxxxx';
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSending(true);
-    
-    console.log("Simulating email send with data:", formData);
-    setTimeout(() => {
+
+    // Prepare template parameters
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      phone: formData.phone || 'Non fourni',
+      subject: formData.subject,
+      message: formData.message,
+      to_email: 'contact@napro.dz' // Your company email
+    };
+
+    try {
+      // Send email via EmailJS
+      const response = await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        templateParams,
+        EMAILJS_PUBLIC_KEY
+      );
+
+      console.log('SUCCESS!', response.status, response.text);
+      
+      // Show success message
       setModalMessage(t('contact.successMessage'));
       setIsError(false);
       setModalOpen(true);
+      
+      // Reset form
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('FAILED...', error);
+      
+      // Show error message
+      setModalMessage(t('contact.errorMessage'));
+      setIsError(true);
+      setModalOpen(true);
+    } finally {
       setIsSending(false);
-    }, 1500);
+    }
   };
 
   return (
@@ -949,70 +1003,12 @@ function ContactPage() {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
+          {/* Contact Info Section - stays the same */}
           <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
-            <div className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('contact.infoTitle')}</h2>
-              
-              <div className="space-y-6">
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 dark:bg-blue-600/20 p-3 rounded-lg">
-                    <Phone className="text-blue-600 dark:text-blue-400" size={24} />
-                  </div>
-                  <div>
-                    <div className="text-slate-900 dark:text-white font-semibold mb-1">{t('contact.phone')}</div>
-                    <div className="text-slate-700 dark:text-gray-300">+213 028 53 89 80</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 dark:bg-blue-600/20 p-3 rounded-lg">
-                    <Phone className="text-blue-600 dark:text-blue-400" size={24} />
-                  </div>
-                  <div>
-                    <div className="text-slate-900 dark:text-white font-semibold mb-1">{t('contact.fax')}</div>
-                    <div className="text-slate-700 dark:text-gray-300">+213 028 53 89 78</div>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 dark:bg-blue-600/20 p-3 rounded-lg">
-                    <Mail className="text-blue-600 dark:text-blue-400" size={24} />
-                  </div>
-                  <div>
-                    <div className="text-slate-900 dark:text-white font-semibold mb-1">{t('contact.email')}</div>
-                    <a href="mailto:contact@napro.dz" className="text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400">contact@napro.dz</a>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="bg-blue-100 dark:bg-blue-600/20 p-3 rounded-lg">
-                    <MapPin className="text-blue-600 dark:text-blue-400" size={24} />
-                  </div>
-                  <div>
-                    <div className="text-slate-900 dark:text-white font-semibold mb-1">{t('contact.address')}</div>
-                    <div className="text-slate-700 dark:text-gray-300 whitespace-pre-line">
-                      {t('contact.addressVal')}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl">
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">{t('contact.hoursTitle')}</h3>
-              <div className="space-y-2 text-slate-700 dark:text-gray-300">
-                <div className="flex justify-between">
-                  <span className="font-medium">{t('contact.weekdays')}</span>
-                  <span className="text-blue-600 dark:text-blue-400 font-semibold">{t('contact.weekdaysHours')}</span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="font-medium">{t('contact.weekends')}</span>
-                  <span className="text-slate-500 dark:text-gray-500">{t('contact.weekendsHours')}</span>
-                </div>
-              </div>
-            </div>
+            {/* ... contact info cards ... */}
           </motion.div>
 
+          {/* Contact Form Section */}
           <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl">
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('contact.formTitle')}</h2>
             <form onSubmit={handleSubmit} className="space-y-6">
@@ -1102,6 +1098,7 @@ function ContactPage() {
         </div>
       </div>
       
+      {/* Success/Error Modal */}
       <AnimatePresence>
         {modalOpen && (
           <motion.div

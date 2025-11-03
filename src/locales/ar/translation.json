@@ -190,6 +190,29 @@
     ],
     "featured": [
       {
+        "id": "parc-industriel",
+        "title": "المنطقة الصناعية رأس الماء",
+        "client": "ANIREF",
+        "location": "سيدي بلعباس",
+        "category": "industrial",
+        "description": "إدارة المشروع لإنجاز المنطقة الصناعية رأس الماء على مساحة 100 هكتار. التهيئة الكاملة للمنطقة الصناعية.",
+        "images": [
+          "images/projects/Ras El Ma/image2.png",
+           "images/projects/Ras El Ma/002-R2.png",
+          "images/projects/Ras El Ma/003-R.png",
+          "images/projects/Ras El Ma/89-R2.png",
+          "images/projects/Ras El Ma/89-R4.png",
+          "images/projects/Ras El Ma/91-R4.png",
+          "images/projects/Ras El Ma/91-R6.png",
+          "images/projects/Ras El Ma/94-R.png",
+          "images/projects/Ras El Ma/94-R2.png",
+          "images/projects/Ras El Ma/96-R.png",
+          "images/projects/Ras El Ma/96-R2.png",
+          "images/projects/Ras El Ma/97-R2.png",
+          "images/projects/Ras El Ma/98-R.png"
+        ]
+      },
+      {
         "id": "lycee-bouinan",
         "title": "ثانوية 1000 مقعد - بوينان",
         "client": "AADL",
@@ -247,17 +270,6 @@
           "images/projects/Sidi Ghiles/image17.jpeg",
           "images/projects/Sidi Ghiles/image18.jpeg"
         ]
-      },
-      {
-        "id": "parc-industriel",
-        "title": "المنطقة الصناعية رأس الماء",
-        "client": "ANIREF",
-        "location": "سيدي بلعباس",
-        "category": "industrial",
-        "description": "إدارة المشروع لإنجاز المنطقة الصناعية رأس الماء على مساحة 100 هكتار. التهيئة الكاملة للمنطقة الصناعية.",
-        "images": [
-          "images/projects/Ras El Ma/image2.png"
-        ]
       }
     ]
   },
@@ -295,7 +307,8 @@
     "sending": "جاري الإرسال...",
     "successMessage": "تم إرسال الرسالة بنجاح! سنتواصل معك قريباً.",
     "client": "العميل",
-    "location": "الموقع"
+    "location": "الموقع",
+    "errorMessage": "خطأ في إرسال الرسالة. يرجى المحاولة مرة أخرى أو الاتصال بنا مباشرة عبر الهاتف."
   },
   "categories": {
     "housing": "السكن",

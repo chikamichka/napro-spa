@@ -191,6 +191,29 @@
     ],
     "featured": [
       {
+        "id": "parc-industriel",
+        "title": "Ras El Ma Industrial Park",
+        "client": "ANIREF",
+        "location": "Sidi Bel Abbes",
+        "category": "industrial",
+        "description": "Project management for the development of the Ras El Ma Industrial Park over 100 hectares. Complete industrial territory development.",
+        "images": [
+          "images/projects/Ras El Ma/image2.png",
+          "images/projects/Ras El Ma/002-R2.png",
+          "images/projects/Ras El Ma/003-R.png",
+          "images/projects/Ras El Ma/89-R2.png",
+          "images/projects/Ras El Ma/89-R4.png",
+          "images/projects/Ras El Ma/91-R4.png",
+          "images/projects/Ras El Ma/91-R6.png",
+          "images/projects/Ras El Ma/94-R.png",
+          "images/projects/Ras El Ma/94-R2.png",
+          "images/projects/Ras El Ma/96-R.png",
+          "images/projects/Ras El Ma/96-R2.png",
+          "images/projects/Ras El Ma/97-R2.png",
+          "images/projects/Ras El Ma/98-R.png"
+        ]
+      },
+      {
         "id": "lycee-bouinan",
         "title": "1000-Student High School - Bouinan",
         "client": "AADL",
@@ -248,17 +271,6 @@
           "images/projects/Sidi Ghiles/image17.jpeg",
           "images/projects/Sidi Ghiles/image18.jpeg"
         ]
-      },
-      {
-        "id": "parc-industriel",
-        "title": "Ras El Ma Industrial Park",
-        "client": "ANIREF",
-        "location": "Sidi Bel Abbes",
-        "category": "industrial",
-        "description": "Project management for the development of the Ras El Ma Industrial Park over 100 hectares. Complete industrial territory development.",
-        "images": [
-          "images/projects/Ras El Ma/image2.png"
-        ]
       }
     ]
   },
@@ -296,7 +308,9 @@
     "sending": "Sending...",
     "successMessage": "Message sent successfully! We will contact you soon.",
     "client": "Client",
-    "location": "Location"
+    "location": "Location",
+    "errorMessage": "Error sending message. Please try again or contact us directly by phone."
+
   },
   "categories": {
     "housing": "Housing",

@@ -189,6 +189,30 @@
       { "id": 55, "name": "Equipement Electricité et Climatisation APN", "client": "Assemblee Populaire Nationale", "location": "Alger", "category": "infrastructure" }
     ],
     "featured": [
+
+      {
+        "id": "parc-industriel",
+        "title": "Parc Industriel Ras El Ma",
+        "client": "ANIREF",
+        "location": "Sidi Bel Abbes",
+        "category": "industrial",
+        "description": "Maîtrise d'œuvre pour la réalisation du Parc Industriel de Ras El Ma sur 100 hectares. Aménagement complet du territoire industriel.",
+        "images": [
+          "images/projects/Ras El Ma/image2.png",
+          "images/projects/Ras El Ma/002-R2.png",
+          "images/projects/Ras El Ma/003-R.png",
+          "images/projects/Ras El Ma/89-R2.png",
+          "images/projects/Ras El Ma/89-R4.png",
+          "images/projects/Ras El Ma/91-R4.png",
+          "images/projects/Ras El Ma/91-R6.png",
+          "images/projects/Ras El Ma/94-R.png",
+          "images/projects/Ras El Ma/94-R2.png",
+          "images/projects/Ras El Ma/96-R.png",
+          "images/projects/Ras El Ma/96-R2.png",
+          "images/projects/Ras El Ma/97-R2.png",
+          "images/projects/Ras El Ma/98-R.png"
+        ]
+      },
       {
         "id": "lycee-bouinan",
         "title": "Lycée 1000 places - Bouinan",
@@ -247,17 +271,6 @@
           "images/projects/Sidi Ghiles/image17.jpeg",
           "images/projects/Sidi Ghiles/image18.jpeg"
         ]
-      },
-      {
-        "id": "parc-industriel",
-        "title": "Parc Industriel Ras El Ma",
-        "client": "ANIREF",
-        "location": "Sidi Bel Abbes",
-        "category": "industrial",
-        "description": "Maîtrise d'œuvre pour la réalisation du Parc Industriel de Ras El Ma sur 100 hectares. Aménagement complet du territoire industriel.",
-        "images": [
-          "images/projects/Ras El Ma/image2.png"
-        ]
       }
     ]
   },
@@ -295,7 +308,8 @@
     "sending": "Envoi en cours...",
     "successMessage": "Message envoyé avec succès! Nous vous contacterons bientôt.",
     "client": "Client",
-    "location": "Localisation"
+    "location": "Localisation",
+    "errorMessage": "Erreur lors de l'envoi du message. Veuillez réessayer ou nous contacter directement par téléphone."
   },
   "categories": {
     "housing": "Logement",
