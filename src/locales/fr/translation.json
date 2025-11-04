@@ -25,7 +25,7 @@
       { "title": "Supervision", "desc": "OPC, maîtrise d'œuvre et contrôle" }
     ],
     "clientsTitle": "Nos Clients de Référence",
-    "clients": ["AADL","OPGI","SONELGAZ","ANIREF","ACC/ORASCOM", "Sonatrach","APN", "Ministère Justice"]
+    "clients": ["ANIREF","SONELGAZ","ACC/ORASCOM","Sonatrach","AADL","OPGI","APN", "Ministère Justice"]
   },
   "about": {
     "title": "À Propos de NAPRO",

@@ -25,7 +25,7 @@
       { "title": "الإشراف", "desc": "التنظيم، الإدارة والمراقبة (OPC)" }
     ],
     "clientsTitle": "عملاؤنا المرجعيون",
-    "clients": ["AADL", "OPGI", "سونلغاز", "ANIREF","ACC/ORASCOM","سوناطراك", "APN","وزارة العدل"]
+    "clients": ["ANIREF", "سونلغاز", "ACC/ORASCOM","سوناطراك", "AADL", "OPGI",  "APN","وزارة العدل"]
   },
   "about": {
     "title": "عن مؤسسة نابرو (NAPRO)",

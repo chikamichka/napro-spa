@@ -26,7 +26,7 @@
       { "title": "Supervision", "desc": "OPC, project management, and control" }
     ],
     "clientsTitle": "Our Key Clients",
-    "clients": ["AADL", "OPGI", "SONELGAZ", "ANIREF","ACC/ORASCOM","Sonatrach", "APN","Ministry of Justice"]
+    "clients": ["ANIREF","SONELGAZ", "ACC/ORASCOM","Sonatrach", "AADL", "OPGI", "APN","Ministry of Justice"]
   },
   "about": {
     "title": "About NAPRO",
