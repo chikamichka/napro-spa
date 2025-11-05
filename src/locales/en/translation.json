@@ -46,7 +46,7 @@
     "missionTags": "Excellence • Innovation • Reliability",
     "teamTitle": "Team Structure",
     "team": [
-      { "title": "Executive Managers", "count": "04" },
+      { "title": "Executive Managers", "count": "02" },
       { "title": "Engineers & Managers", "count": "30" },
       { "title": "Senior Technicians", "count": "11" },
       { "title": "Support Staff", "count": "05" }
@@ -133,6 +133,7 @@
   },
   "projectsData": {
     "all": [
+      { "id": 22, "name": "Ras El Ma Industrial Park (100 Ha)", "client": "ANIREF", "location": "Sidi Bel Abbes", "category": "industrial" },
       { "id": 10, "name": "M'sila Cement Plant - Civil Engineering", "client": "ACC/ORASCOM", "location": "M'sila", "category": "industrial" },
       { "id": 11, "name": "Oggaz/Sig Cement Plant - Civil Engineering", "client": "CIBA/ORASCOM", "location": "Sig", "category": "industrial" },
       { "id": 12, "name": "Chlef Cement Plant - Clinker Silos", "client": "ECDE", "location": "Chlef", "category": "industrial" },
@@ -145,7 +146,6 @@
       { "id": 19, "name": "IRARA Base Swimming Pool Development", "client": "Sonatrach/DP/HMD", "location": "Hassi Messaoud", "category": "industrial" },
       { "id": 20, "name": "Leather and Hides Factories Rehabilitation", "client": "Tanneries", "location": "Djijel, Djelfa, El Amiria, Batna, Bejaia", "category": "industrial" },
       { "id": 21, "name": "200-Space Truck Parking - Cement Plant", "client": "ACC/LAFARGE", "location": "Hamma el dalaa, M'sila", "category": "industrial" },
-      { "id": 22, "name": "Ras El Ma Industrial Park (100 Ha)", "client": "ANIREF", "location": "Sidi Bel Abbes", "category": "industrial" },
       { "id": 23, "name": "1000-Student High School Bouinan", "client": "AADL", "location": "Bouinan", "category": "education" },
       { "id": 24, "name": "05 Type B6 Middle Schools", "client": "AADL", "location": "Bouinan", "category": "education" },
       { "id": 25, "name": "06 Type D School Groups", "client": "AADL", "location": "Sidi Abdallah", "category": "education" },

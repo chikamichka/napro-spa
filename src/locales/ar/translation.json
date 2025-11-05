@@ -45,7 +45,7 @@
     "missionTags": "التميز • الابتكار • الموثوقية",
     "teamTitle": "هيكل الفريق",
     "team": [
-      { "title": "إطارات تنفيذية", "count": "04" },
+      { "title": "إطارات تنفيذية", "count": "02" },
       { "title": "مهندسون وإطارات", "count": "30" },
       { "title": "تقنيون سامون", "count": "11" },
       { "title": "موظفو دعم", "count": "05" }
@@ -132,6 +132,7 @@
   },
   "projectsData": {
     "all": [
+      { "id": 22, "name": "المنطقة الصناعية رأس الماء (100 هكتار)", "client": "ANIREF", "location": "سيدي بلعباس", "category": "industrial" },
       { "id": 10, "name": "مصنع الإسمنت المسيلة - الهندسة المدنية", "client": "ACC/ORASCOM", "location": "المسيلة", "category": "industrial" },
       { "id": 11, "name": "مصنع الإسمنت عقاز/سيق - الهندسة المدنية", "client": "CIBA/ORASCOM", "location": "سيق", "category": "industrial" },
       { "id": 12, "name": "مصنع الإسمنت الشلف - صوامع الكلنكر", "client": "ECDE", "location": "الشلف", "category": "industrial" },
@@ -144,7 +145,6 @@
       { "id": 19, "name": "تهيئة مسبح قاعدة إيرارا", "client": "سوناطراك/DP/HMD", "location": "حاسي مسعود", "category": "industrial" },
       { "id": 20, "name": "إعادة تأهيل مصانع الجلود والدباغة", "client": "المدابغ", "location": "جيجل، الجلفة، العامرية، باتنة، بجاية", "category": "industrial" },
       { "id": 21, "name": "موقف 200 مكان للشاحنات - مصنع الإسمنت", "client": "ACC/LAFARGE", "location": "حمة الضلعة، المسيلة", "category": "industrial" },
-      { "id": 22, "name": "المنطقة الصناعية رأس الماء (100 هكتار)", "client": "ANIREF", "location": "سيدي بلعباس", "category": "industrial" },
       { "id": 23, "name": "ثانوية 1000 مقعد بوينان", "client": "AADL", "location": "بوينان", "category": "education" },
       { "id": 24, "name": "05 متوسطات نوع B6", "client": "AADL", "location": "بوينان", "category": "education" },
       { "id": 25, "name": "06 مجموعات مدرسية نوع D", "client": "AADL", "location": "سيدي عبد الله", "category": "education" },

@@ -45,7 +45,7 @@
     "missionTags": "Excellence • Innovation • Fiabilité",
     "teamTitle": "Structure de l'Équipe",
     "team": [
-      { "title": "Cadres Dirigeants", "count": "04" },
+      { "title": "Cadres Dirigeants", "count": "02" },
       { "title": "Ingénieurs & Cadres", "count": "30" },
       { "title": "Techniciens Supérieurs", "count": "11" },
       { "title": "Personnel Support", "count": "05" }
@@ -132,6 +132,7 @@
   },
    "projectsData": {
     "all": [
+      { "id": 22, "name": "Parc Industriel Ras El Ma (100 Ha)", "client": "ANIREF", "location": "Sidi Bel Abbes", "category": "industrial" },
       { "id": 10, "name": "Cimenterie M'sila - Génie Civil", "client": "ACC/ORASCOM", "location": "M'sila", "category": "industrial" },
       { "id": 11, "name": "Cimenterie Oggaz/Sig - Génie Civil", "client": "CIBA/ORASCOM", "location": "Sig", "category": "industrial" },
       { "id": 12, "name": "Cimenterie Chlef - Silos à clincker", "client": "ECDE", "location": "Chlef", "category": "industrial" },
@@ -144,7 +145,6 @@
       { "id": 19, "name": "Aménagement piscine Base IRARA", "client": "Sonatrach/DP/HMD", "location": "Hassi Messaoud", "category": "industrial" },
       { "id": 20, "name": "Réhabilitation usines Peaux et Cuirs", "client": "Tanneries", "location": "Djijel, Djelfa, El Amiria, Batna, Bejaia", "category": "industrial" },
       { "id": 21, "name": "Parking 200 places camions - Cimenterie", "client": "ACC/LAFARGE", "location": "Hamma el dalaa, M'sila", "category": "industrial" },
-      { "id": 22, "name": "Parc Industriel Ras El Ma (100 Ha)", "client": "ANIREF", "location": "Sidi Bel Abbes", "category": "industrial" },
       { "id": 23, "name": "Lycée 1000 places Bouinan", "client": "AADL", "location": "Bouinan", "category": "education" },
       { "id": 24, "name": "05 Collèges type B6", "client": "AADL", "location": "Bouinan", "category": "education" },
       { "id": 25, "name": "06 Groupes scolaires type D", "client": "AADL", "location": "Sidi Abdallah", "category": "education" },
