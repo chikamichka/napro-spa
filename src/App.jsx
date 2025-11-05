@@ -632,7 +632,7 @@ function GalleryPage() {
               }}
             >
               <img 
-                src={project.images[0]} 
+                src={project.images[0].src} // CHANGED
                 alt={project.title} 
                 className="h-64 w-full object-cover" 
                 onError={(e) => { e.target.src = 'https://placehold.co/600x400/e0e7ff/3b82f6?text=Image+Indisponible'; e.target.onerror = null; }}
@@ -690,7 +690,7 @@ function GalleryPage() {
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={currentImageIndex}
-                      src={selectedProject.images[currentImageIndex]}
+                      src={selectedProject.images[currentImageIndex].src} // CHANGED
                       alt={`${selectedProject.title} - ${currentImageIndex + 1}`}
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
@@ -719,12 +719,27 @@ function GalleryPage() {
                   )}
                 </div>
 
+                {/* === ADDED BLOCK START === */}
+                {/* This block displays the description for the current image */}
+                {selectedProject.images[currentImageIndex].description && (
+                  <motion.div
+                    key={currentImageIndex} // Add key to re-animate on change
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2, delay: 0.1 }}
+                    className="mt-4 text-center text-lg text-slate-700 dark:text-gray-300"
+                  >
+                    {selectedProject.images[currentImageIndex].description}
+                  </motion.div>
+                )}
+                {/* === ADDED BLOCK END === */}
+
                 {selectedProject.images.length > 1 && (
                   <div className="mt-4 h-24 overflow-x-auto flex gap-2 p-1">
                     {selectedProject.images.map((img, i) => (
                       <img
                         key={i}
-                        src={img}
+                        src={img.src} // CHANGED
                         alt={`Thumbnail ${i + 1}`}
                         onClick={() => setCurrentImageIndex(i)}
                         className={`h-20 w-28 object-cover rounded-md cursor-pointer transition-all ${
@@ -764,7 +779,6 @@ function GalleryPage() {
     </div>
   );
 }
-
 // Projects Page
 function ProjectsPage() {
   const { t } = useTranslation();
@@ -932,38 +946,31 @@ function ContactPage() {
     subject: '',
     message: ''
   });
-  
+
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState('');
   const [isError, setIsError] = useState(false);
   const [isSending, setIsSending] = useState(false);
 
-  // 🔧 OPTION A: Using Environment Variables (RECOMMENDED)
+  // ✅ Environment Variables (Recommended)
   const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
-
-  // 🔧 OPTION B: Direct Values (for testing - NOT RECOMMENDED for production)
-  // const EMAILJS_SERVICE_ID = 'service_xxxxxx';
-  // const EMAILJS_TEMPLATE_ID = 'template_xxxxxx';
-  // const EMAILJS_PUBLIC_KEY = 'xxxxxxxxxxxxxx';
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsSending(true);
 
-    // Prepare template parameters
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
       phone: formData.phone || 'Non fourni',
       subject: formData.subject,
       message: formData.message,
-      to_email: 'contact@napro.dz' // Your company email
+      to_email: 'contact@napro.dz'
     };
 
     try {
-      // Send email via EmailJS
       const response = await emailjs.send(
         EMAILJS_SERVICE_ID,
         EMAILJS_TEMPLATE_ID,
@@ -972,18 +979,12 @@ function ContactPage() {
       );
 
       console.log('SUCCESS!', response.status, response.text);
-      
-      // Show success message
       setModalMessage(t('contact.successMessage'));
       setIsError(false);
       setModalOpen(true);
-      
-      // Reset form
       setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
     } catch (error) {
       console.error('FAILED...', error);
-      
-      // Show error message
       setModalMessage(t('contact.errorMessage'));
       setIsError(true);
       setModalOpen(true);
@@ -995,90 +996,210 @@ function ContactPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-950 dark:to-slate-900 py-32 px-4">
       <div className="max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">{t('contact.title')}</h1>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-5xl font-bold text-slate-900 dark:text-white mb-6">
+            {t('contact.title')}
+          </h1>
           <p className="text-xl text-slate-800 dark:text-gray-300 font-medium">
             {t('contact.subtitle')}
           </p>
         </motion.div>
 
+        {/* Grid Layout */}
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Contact Info Section - stays the same */}
-          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="space-y-6">
-            {/* ... contact info cards ... */}
+          {/* 🗺️ Contact Info Section */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="space-y-6"
+          >
+            {/* Contact Information */}
+            <div className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl">
+              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
+                {t('contact.infoTitle')}
+              </h2>
+
+              <div className="space-y-6">
+                {/* Phone */}
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 dark:bg-blue-600/20 p-3 rounded-lg">
+                    <Phone className="text-blue-600 dark:text-blue-400" size={24} />
+                  </div>
+                  <div>
+                    <div className="text-slate-900 dark:text-white font-semibold mb-1">
+                      {t('contact.phone')}
+                    </div>
+                    <div className="text-slate-700 dark:text-gray-300">+213 028 53 89 80</div>
+                  </div>
+                </div>
+
+                {/* Fax */}
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 dark:bg-blue-600/20 p-3 rounded-lg">
+                    <Phone className="text-blue-600 dark:text-blue-400" size={24} />
+                  </div>
+                  <div>
+                    <div className="text-slate-900 dark:text-white font-semibold mb-1">
+                      {t('contact.fax')}
+                    </div>
+                    <div className="text-slate-700 dark:text-gray-300">+213 028 53 89 78</div>
+                  </div>
+                </div>
+
+                {/* Email */}
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 dark:bg-blue-600/20 p-3 rounded-lg">
+                    <Mail className="text-blue-600 dark:text-blue-400" size={24} />
+                  </div>
+                  <div>
+                    <div className="text-slate-900 dark:text-white font-semibold mb-1">
+                      {t('contact.email')}
+                    </div>
+                    <a
+                      href="mailto:contact@napro.dz"
+                      className="text-slate-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400"
+                    >
+                      contact@napro.dz
+                    </a>
+                  </div>
+                </div>
+
+                {/* Address */}
+                <div className="flex items-start gap-4">
+                  <div className="bg-blue-100 dark:bg-blue-600/20 p-3 rounded-lg">
+                    <MapPin className="text-blue-600 dark:text-blue-400" size={24} />
+                  </div>
+                  <div>
+                    <div className="text-slate-900 dark:text-white font-semibold mb-1">
+                      {t('contact.address')}
+                    </div>
+                    <div className="text-slate-700 dark:text-gray-300 whitespace-pre-line">
+                      {t('contact.addressVal')}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Opening Hours */}
+            <div className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl">
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">
+                {t('contact.hoursTitle')}
+              </h3>
+              <div className="space-y-2 text-slate-700 dark:text-gray-300">
+                <div className="flex justify-between">
+                  <span className="font-medium">{t('contact.weekdays')}</span>
+                  <span className="text-blue-600 dark:text-blue-400 font-semibold">
+                    {t('contact.weekdaysHours')}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="font-medium">{t('contact.weekends')}</span>
+                  <span className="text-slate-500 dark:text-gray-500">
+                    {t('contact.weekendsHours')}
+                  </span>
+                </div>
+              </div>
+            </div>
           </motion.div>
 
-          {/* Contact Form Section */}
-          <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl">
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('contact.formTitle')}</h2>
+          {/* ✉️ Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 shadow-xl"
+          >
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
+              {t('contact.formTitle')}
+            </h2>
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formName')}</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">
+                  {t('contact.formName')}
+                </label>
                 <input
                   type="text"
                   required
                   value={formData.name}
-                  onChange={(e) => setFormData({...formData, name: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
                   placeholder={t('contact.formNamePlaceholder')}
                   disabled={isSending}
                 />
               </div>
+
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formEmail')}</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">
+                  {t('contact.formEmail')}
+                </label>
                 <input
                   type="email"
                   required
                   value={formData.email}
-                  onChange={(e) => setFormData({...formData, email: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
                   placeholder={t('contact.formEmailPlaceholder')}
                   disabled={isSending}
                 />
               </div>
+
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formPhone')}</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">
+                  {t('contact.formPhone')}
+                </label>
                 <input
                   type="tel"
                   value={formData.phone}
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
                   placeholder={t('contact.formPhonePlaceholder')}
                   disabled={isSending}
                 />
               </div>
+
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formSubject')}</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">
+                  {t('contact.formSubject')}
+                </label>
                 <input
                   type="text"
                   required
                   value={formData.subject}
-                  onChange={(e) => setFormData({...formData, subject: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors"
                   placeholder={t('contact.formSubjectPlaceholder')}
                   disabled={isSending}
                 />
               </div>
+
               <div>
-                <label className="block text-slate-900 dark:text-white font-semibold mb-2">{t('contact.formMessage')}</label>
+                <label className="block text-slate-900 dark:text-white font-semibold mb-2">
+                  {t('contact.formMessage')}
+                </label>
                 <textarea
                   required
                   value={formData.message}
-                  onChange={(e) => setFormData({...formData, message: e.target.value})}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows={5}
                   className="w-full bg-slate-100 dark:bg-slate-900/50 border-2 border-slate-300 dark:border-slate-700 rounded-lg px-4 py-3 text-slate-900 dark:text-white focus:border-blue-500 focus:outline-none transition-colors resize-none"
                   placeholder={t('contact.formMessagePlaceholder')}
                   disabled={isSending}
                 />
               </div>
+
               <motion.button
                 whileHover={{ scale: isSending ? 1 : 1.02 }}
                 whileTap={{ scale: isSending ? 1 : 0.98 }}
                 type="submit"
                 disabled={isSending}
                 className={`w-full py-4 rounded-lg font-semibold transition-colors flex items-center justify-center gap-2 shadow-xl ${
-                  isSending 
-                    ? 'bg-blue-400 cursor-not-allowed' 
+                  isSending
+                    ? 'bg-blue-400 cursor-not-allowed'
                     : 'bg-blue-600 hover:bg-blue-700'
                 } text-white`}
               >
@@ -1097,8 +1218,8 @@ function ContactPage() {
           </motion.div>
         </div>
       </div>
-      
-      {/* Success/Error Modal */}
+
+      {/* ✅ Modal */}
       <AnimatePresence>
         {modalOpen && (
           <motion.div
@@ -1120,7 +1241,9 @@ function ContactPage() {
               ) : (
                 <CheckCircle className="text-green-500 dark:text-green-400 w-16 h-16 mx-auto mb-4" />
               )}
-              <p className="text-lg text-slate-900 dark:text-white font-semibold mb-6">{modalMessage}</p>
+              <p className="text-lg text-slate-900 dark:text-white font-semibold mb-6">
+                {modalMessage}
+              </p>
               <button
                 onClick={() => setModalOpen(false)}
                 className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors"
@@ -1134,7 +1257,6 @@ function ContactPage() {
     </div>
   );
 }
-
 // Language Switcher
 function LanguageSwitcher() {
   const { i18n } = useTranslation();
