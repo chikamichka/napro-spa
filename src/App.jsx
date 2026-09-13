@@ -357,7 +357,7 @@ function HomePage({ navigate, isActive }) {
       <section className="py-20 bg-white/80 dark:bg-slate-800/50 backdrop-blur">
         <div className="max-w-6xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-8">
           {t('home.stats', { returnObjects: true }).map((stat, i) => (
-            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ delay: i * 0.1 }} className="text-center">
+            <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-center">
               <div className="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 mb-2">{stat.number}</div>
               <div className="text-slate-700 dark:text-gray-300 font-medium">{stat.label}</div>
             </motion.div>
@@ -367,7 +367,7 @@ function HomePage({ navigate, isActive }) {
 
       <section className="py-20 px-4 bg-slate-100 dark:bg-slate-900/50">
         <div className="max-w-6xl mx-auto">
-          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center mb-16">
+          <motion.h2 initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white text-center mb-16">
             {t('home.expertiseTitle')}
           </motion.h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -376,6 +376,7 @@ function HomePage({ navigate, isActive }) {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 whileHover={{ scale: 1.05, y: -5 }}
                 className="bg-white dark:bg-gradient-to-br dark:from-slate-800 dark:to-slate-900 p-6 rounded-xl border-2 border-slate-300 dark:border-blue-500/20 hover:border-blue-500 dark:hover:border-blue-500/50 transition-all cursor-pointer shadow-lg dark:shadow-none"
@@ -403,6 +404,7 @@ function HomePage({ navigate, isActive }) {
                 key={i}
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
                 className="bg-white dark:bg-white/10 backdrop-blur p-6 rounded-lg border-2 border-slate-300 dark:border-slate-700 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-slate-50 dark:hover:bg-white/20 transition-all"
               >
@@ -494,6 +496,7 @@ function AboutPage() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-blue-500/20 mb-16 shadow-lg dark:shadow-none"
         >
           <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8 text-center">{t('about.teamTitle')}</h2>
@@ -511,6 +514,7 @@ function AboutPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-blue-500/20 shadow-lg dark:shadow-none"
           >
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('about.techTitle')}</h2>
@@ -527,6 +531,7 @@ function AboutPage() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-blue-500/20 shadow-lg dark:shadow-none"
           >
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('about.turnoverTitle')}</h2>
@@ -570,6 +575,7 @@ function ServicesPage() {
               key={i}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className="bg-white dark:bg-slate-800/50 backdrop-blur p-8 rounded-xl border border-slate-200 dark:border-blue-500/20 hover:border-blue-500 dark:hover:border-blue-500/50 transition-all shadow-lg dark:shadow-none"
             >
@@ -623,6 +629,7 @@ function GalleryPage() {
               key={project.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               whileHover={{ scale: 1.02 }}
               className="bg-white dark:bg-slate-800/50 backdrop-blur rounded-xl border-2 border-slate-300 dark:border-blue-500/20 hover:border-blue-500 dark:hover:border-blue-500/50 transition-all shadow-xl cursor-pointer overflow-hidden"
