@@ -312,16 +312,16 @@ function Building3D() {
 }
 
 // Home Page
-function HomePage({ navigate }) {
+function HomePage({ navigate, isActive }) {
   const { theme } = useApp();
   const { t } = useTranslation();
   const isDark = theme === 'dark';
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-950 dark:to-slate-900">
+    <div className={`min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-slate-100 dark:bg-gradient-to-br dark:from-slate-900 dark:via-blue-950 dark:to-slate-900 ${isActive ? '' : 'hidden'}`}>
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <Canvas shadows>
+          <Canvas shadows frameloop={isActive ? 'always' : 'never'}>
             <PerspectiveCamera makeDefault position={[5, 3, 8]} fov={60} />
             {isDark && <Stars radius={100} depth={50} count={5000} factor={4} saturation={0} fade speed={1} />}
             <ambientLight intensity={isDark ? 0.6 : 1.2} />
@@ -1419,12 +1419,24 @@ function App() {
       </nav>
 
       <main>
-        {currentPage === 'home' && <HomePage navigate={navigate} />}
-        {currentPage === 'about' && <AboutPage />}
-        {currentPage === 'services' && <ServicesPage />}
-        {currentPage === 'gallery' && <GalleryPage />}
-        {currentPage === 'projects' && <ProjectsPage />}
-        {currentPage === 'contact' && <ContactPage />}
+        <HomePage navigate={navigate} isActive={currentPage === 'home'} />
+        <AnimatePresence mode="wait">
+          {currentPage !== 'home' && (
+            <motion.div
+              key={currentPage}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: 0.25 }}
+            >
+              {currentPage === 'about' && <AboutPage />}
+              {currentPage === 'services' && <ServicesPage />}
+              {currentPage === 'gallery' && <GalleryPage />}
+              {currentPage === 'projects' && <ProjectsPage />}
+              {currentPage === 'contact' && <ContactPage />}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </main>
 
       <footer className="py-12 bg-slate-200 dark:bg-slate-950 border-t-2 border-slate-300 dark:border-slate-800">
