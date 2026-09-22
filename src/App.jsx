@@ -6,7 +6,7 @@ import {
   Building2, Users, Briefcase, Phone, Menu, X, ChevronRight, ChevronLeft,
   Award, MapPin, 
   Mail, Target, TrendingUp, CheckCircle, ArrowRight, Sun, Moon, Globe,
-  MapPinned
+  MapPinned, UserCog
 } from 'lucide-react';
 import * as THREE from 'three';
 import { useTranslation } from 'react-i18next';
@@ -469,6 +469,13 @@ function AboutPage() {
                 <div>
                   <div className="font-semibold text-slate-800 dark:text-white">{t('about.ceo')}</div>
                   <div>{t('about.ceoVal')}</div>
+                </div>
+              </div>
+              <div className="flex items-start gap-3">
+                <UserCog className="text-blue-600 dark:text-blue-400 mt-1" size={20} />
+                <div>
+                  <div className="font-semibold text-slate-800 dark:text-white">{t('about.dtc')}</div>
+                  <div>{t('about.dtcVal')}</div>
                 </div>
               </div>
             </div>
